@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+    <record id="view_partner_property_form_banks" model="ir.ui.view">
+        <field name="name">res.partner.account.form.banks</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='accounting']" position="after">
+                <page string="Bancos">
+                    <field name="bank_ids" nolabel="1">
+                        <tree string="Cuentas Bancarias">
+                            <field name="sequence" invisible="1"/>
+                            <field name="bank_id"/>
+                            <field name="currency_id"/>
+                            <field name="acc_number" string="Nro Cta Bancaria"/>
+                            <field name="acc_number_cci" string="Nro Cta Interbancaria"/>
+                            <field name="bank_name"/>
+                            <field name="acc_type_nbr"/>
+                            <field name="apply_detraction"/>
+                            <field name="street"/>
+                            <field name="street2"/>
+                            <field name="active"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="bank_bic" invisible="1"/>
+                        </tree>
+                        <form string="Bank Accounts">
+                            <group col="4" colspan="4">
+                                <field name="bank_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                <field name="currency_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                                <field name="acc_number" string="Nro Cta Bancaria"/>
+                                 <field name="acc_number_cci" string="Nro Cta Interbancaria"/>
+                                <field name="bank_name"/>
+                                <field name="acc_type_nbr" required="True"/>
+                                <field name="bank_bic" invisible="1"/>
+                                <field name="apply_detraction"/>
+                                <field name="street"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="street2"/>
+                                <field name="active"/>
+                            </group>
+                        </form>
+                   	</field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+	</data>
+</odoo> 

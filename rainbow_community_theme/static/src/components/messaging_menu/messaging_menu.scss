@@ -1,0 +1,39 @@
+.o_sidebar_mode {
+    .o_MessagingMenu_dropdownMenu {
+        display: flex;
+        flex-flow: column;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow-y: auto;
+        /**
+         * Override from bootstrap .dropdown-menu to fix top alignment with other
+         * systray menu.
+         */
+        margin-top: map-get($spacers, 0);
+
+        &.o-messaging-not-initialized {
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:not(.o-mobile) {
+            flex: 0 1 auto;
+            width: 350px;
+            min-height: 50px;
+            max-height: 400px;
+            z-index: 1100; // on top of chat windows
+        }
+
+        &.o-mobile {
+            flex: 1 1 auto;
+            position: fixed;
+            top: $o-mail-chat-window-header-height-mobile*2;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            margin: 0;
+            max-height: none;
+        }
+    }
+}

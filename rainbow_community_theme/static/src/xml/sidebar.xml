@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="SiderbarMenu">
+        <div class="o_sidebar_nav_menu_wrapper" >
+            <div t-attf-class="o_sidebar_nav_menu navbar-collapse {{widget.is_mobile?'collapse':''}}">
+                
+                <t t-if="widget.is_mobile">
+                    <t t-set="menu_mode" t-value=""/>
+                </t>
+                <t t-else="">
+                    <t t-set="menu_mode" t-value="'o_sidebar_menu_'+widget.mode"/>
+                </t>
+
+                <t t-if="widget.is_light_menu">
+                    <t t-set="menu_style" t-value="'o_sidebar_menu_light'"/>
+                </t>
+                <t t-else="">
+                    <t t-set="menu_style" t-value=""/>
+                </t>
+
+                <ul t-attf-class="o_sidebar_menu {{menu_mode}} {{menu_style}}" data-auto-scroll="true">
+                    <li class="sidebar_nav_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search..."/>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger clear_search o_hidden" type="button">
+                                    <i class="fa fa-close"></i>
+                                </button>
+                                <button class="btn btn-outline-secondary search" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SiderbarMenu.FirstLevelMenu">
+        <t t-foreach="menu_data.children" t-as="first_level_menu">
+            <li t-att-data-menu="first_level_menu.id"  t-att-class="'nav-item top-menu ' + ((first_level_menu.id==state['menu_id']? 'active open':''))">
+                <a t-att-class="'nav-link top_menu_link ' + (first_level_menu.children.length > 0 ? 'nav-toggle':'')"
+                    t-att-data-menu="first_level_menu.id" 
+                    t-att-data-action-model="first_level_menu.action ? first_level_menu.action.split(',')[0] : ''"
+                    t-att-data-action-id="first_level_menu.action ? first_level_menu.action.split(',')[1] : ''"
+                    t-att-data-menu-xmlid="first_level_menu.xmlid"
+                >
+                    <img t-attf-src="data:image/png;base64,{{first_level_menu.web_icon_data}}  " />
+                    <span class="title">
+                        <t t-esc="first_level_menu.name"/>
+                    </span>
+                    <span class="selected"/>
+                    <t t-if="show_submenu">
+                        <span t-if="first_level_menu.children.length" class="arrow"/>
+                    </t>
+                </a>
+                
+                <t t-if="show_submenu">
+                    <ul t-if="first_level_menu.children.length" class="sub-menu">
+                        <t t-call="SiderbarMenu.SecondLevelMenu"/>
+                    </ul>
+                </t>
+            </li>
+        </t>
+    </t>
+
+    <t t-name="SiderbarMenu.SecondLevelMenu">
+        <li t-foreach="first_level_menu.children" t-as="second_level_menu" t-att-data-menu="second_level_menu.id"  t-att-class="'nav-item ' + ((second_level_menu.id==state['menu_id']? 'active open':''))">
+            <a t-att-class="'nav-link ' + (second_level_menu.children.length > 0 ? 'nav-toggle':'')"
+                t-att-data-menu="second_level_menu.id" 
+                t-att-data-action-model="second_level_menu.action ? second_level_menu.action.split(',')[0] : ''"
+                t-att-data-action-id="second_level_menu.action ? second_level_menu.action.split(',')[1] : ''"
+                t-att-data-menu-xmlid="second_level_menu.xmlid"
+            >
+                <i t-att-class="(second_level_menu.children.length)? ' fa fa-circle' : 'fa fa-link'"/>
+                <span class="title">
+                    <t t-esc="second_level_menu.name"/>
+                </span>
+                <span class="selected"/>
+                <span t-if="second_level_menu.children.length" class="arrow"/>
+            </a>
+            <ul t-if="second_level_menu.children.length" class="sub-menu">
+                <t t-call="SiderbarMenu.ThirdLevelMenu"/>
+            </ul>
+        </li>
+    </t>
+
+    <t t-name="SiderbarMenu.ThirdLevelMenu">
+        <li t-foreach="second_level_menu.children" t-as="third_level_menu" t-att-data-menu="third_level_menu.id" t-att-class="'nav-item ' + ((third_level_menu.id==state['menu_id']? 'active open':''))">
+            <a t-att-class="'nav-link ' + (third_level_menu.children.length > 0 ? 'nav-toggle':'')"
+                t-att-data-menu="third_level_menu.id" 
+                t-att-data-action-model="third_level_menu.action ? third_level_menu.action.split(',')[0] : ''"
+                t-att-data-action-id="third_level_menu.action ? third_level_menu.action.split(',')[1] : ''"
+                t-att-data-menu-xmlid="third_level_menu.xmlid"
+            >
+                <i t-att-class="(third_level_menu.children.length)? ' fa fa-square' : 'fa fa-link'"/>
+                <span class="title">
+                    <t t-esc="third_level_menu.name"/>
+                </span>
+                <span class="selected"/>
+                <span t-if="third_level_menu.children.length" class="arrow"/>
+            </a>
+            <ul t-if="third_level_menu.children.length" class="sub-menu">
+                <t t-call="SiderbarMenu.FourthLevelMenu"/>
+            </ul>
+        </li>
+    </t>
+
+    <t t-name="SiderbarMenu.FourthLevelMenu">
+        <li t-foreach="third_level_menu.children" t-as="fourth_level_menu" t-att-data-menu="fourth_level_menu.id"  t-att-class="'nav-item ' + ((fourth_level_menu.id==state['menu_id']? 'active open':''))">
+            <a class="nav-link " 
+                t-att-data-menu="fourth_level_menu.id" 
+                t-att-data-action-model="fourth_level_menu.action ? fourth_level_menu.action.split(',')[0] : ''"
+                t-att-data-action-id="fourth_level_menu.action ? fourth_level_menu.action.split(',')[1] : ''"
+                t-att-data-menu-xmlid="fourth_level_menu.xmlid"
+            >
+                <i class="fa fa-link"/>
+                <span class="title">
+                    <t t-esc="fourth_level_menu.name"/>
+                </span>
+                <span class="selected"/>
+            </a>
+        </li>
+    </t>
+
+</templates>

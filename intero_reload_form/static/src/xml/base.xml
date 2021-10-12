@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<!-- Owl Templates -->
+
+<t t-inherit="web.Pager" t-inherit-mode="extension">
+    <xpath expr="//span[@class='btn-group']" position="inside">
+        <button type="button"
+        		class="fa fa-refresh btn btn-icon o_pager_reload"
+                t-att-disabled="state.disabled"
+                aria-label="Reload"
+                title="Reload"
+                tabindex="-1"
+                t-on-click="_changeSelection(0)"
+		/>
+    </xpath>
+</t>
+
+</templates>

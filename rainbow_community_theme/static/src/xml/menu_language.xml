@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="LanguageMenu">
+        <li t-attf-class="o_user_lang #{widget.is_dark_dropdown ? 'dropdown-dark':''}"/>
+    </t>
+
+    <t t-name="LanguageMenu.sections">
+        <a href="#" t-att-title="current_lang['name']" role="button" aria-expanded="false" data-toggle="dropdown" data-display="static" class="dropdown-toggle o-no-caret">
+            <img class="oe_topbar_flag" t-att-src="current_lang['flag_image_url']"/>
+        </a>
+
+        <div t-if="other_lang.length" class="dropdown-menu dropdown-menu-right" role="menu">
+            <t t-foreach="other_lang" t-as="other">
+                <a role="menuitem" href="#" t-att-data-code="other['code']" t-att-title="other['name']"  class="dropdown-item">
+                     <img class="flag" t-att-src="other['flag_image_url']"/>
+                     <span t-esc="other['name']"/>
+                </a>
+            </t>
+        </div>
+    </t>
+</templates>

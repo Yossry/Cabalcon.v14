@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <menuitem id="menu_supertool_root" name="SuperTool"
+        web_icon="supertool,static/description/icon.png"
+        sequence="0"/>
+
+
+
+    <menuitem id="supertool.supertool_config"
+                  name="Configuración"
+                  sequence="50"
+                  parent="menu_supertool_root"/>
+
+
+    <record id="supertool_group_action" model="ir.actions.act_window">
+        <field name="name">Grupos</field>
+        <field name="res_model">supertool.group</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new group.
+          </p><p>
+            Group allows to organize tasks.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="supertool_group_menu" action="supertool_group_action"
+        sequence="10" parent="supertool.supertool_config"
+        groups="base.group_no_one"/>
+
+
+     <record id="supertool_group_view_tree" model="ir.ui.view">
+        <field name="name">supertool.group.tree</field>
+        <field name="model">supertool.group</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Tag">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="name"/>
+                <field name="tipo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="supertool_pillar_action" model="ir.actions.act_window">
+        <field name="name">Pilares</field>
+        <field name="res_model">supertool.pillar</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new pillar.
+          </p><p>
+            Pillar allows to organize tasks.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="supertool_pillar_menu" action="supertool_pillar_action"
+        sequence="20" parent="supertool.supertool_config"
+        groups="base.group_no_one"/>
+
+
+     <record id="supertool_pillar_view_tree" model="ir.ui.view">
+        <field name="name">supertool.pillar.tree</field>
+        <field name="model">supertool.pillar</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Tag">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="supertool_concept_action" model="ir.actions.act_window">
+        <field name="name">Conceptos</field>
+        <field name="res_model">supertool.concept</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new concept.
+          </p><p>
+            Concept allows to organize tasks.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="supertool_concept_menu" action="supertool_concept_action"
+        sequence="30" parent="supertool.supertool_config"
+        groups="base.group_no_one"/>
+
+     <record id="supertool_concept_view_tree" model="ir.ui.view">
+        <field name="name">supertool.concept.tree</field>
+        <field name="model">supertool.concept</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Tag">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="name"/>
+                <field name="pillar_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="supertool_process_action" model="ir.actions.act_window">
+        <field name="name">Procesos</field>
+        <field name="res_model">supertool.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new process.
+          </p><p>
+            Process allows to organize tasks.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="supertool_process_menu" action="supertool_process_action"
+        sequence="40" parent="supertool.supertool_config"
+        groups="base.group_no_one"/>
+
+
+     <record id="supertool_process_view_tree" model="ir.ui.view">
+        <field name="name">supertool.process.tree</field>
+        <field name="model">supertool.process</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Tag">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="supertool_organization_action" model="ir.actions.act_window">
+        <field name="name">Organización</field>
+        <field name="res_model">supertool.organization</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new organization.
+          </p><p>
+            Organization allows to organize Proyects.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="supertool_organization_menu" action="supertool_organization_action"
+        sequence="50" parent="supertool.supertool_config"
+        groups="base.group_no_one"/>
+
+
+
+     <record id="supertool_organization_view_tree" model="ir.ui.view">
+        <field name="name">supertool.organization.tree</field>
+        <field name="model">supertool.organization</field>
+        <field name="arch" type="xml">
+            <tree editable="top" string="Tag">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+        <record  id="project_project_supertool_view_form" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='settings']" position="before">
+                        <page name="objetivos" string="Objetivos">
+                            <group>
+                            <field name="group_id"/>
+                            <field name="objetivo"/>
+                            <field name="alcance"/>
+                            <field name="process_id"/>
+                            <field name="organization_id"/>
+                            <field name="concept_id"/>
+                            <field name="pillar_id"/>
+                            <field name="capex"/>
+                            <field name="opex"/>
+                            </group>
+                        </page>
+
+                        <page name="entregables" string="Entregables">
+                            <field name="entregable_ids">
+                                <tree editable="bottom" string="Entregables">
+                                    <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                                    <field name='name'/>
+                                    <field name="image" widget="image"/>
+                                </tree>
+                            </field>
+                        </page>
+                </xpath>
+            </field>
+
+        </record>
+
+
+
+    <!-- MAIL.ACTIVITY -->
+    <record id="supertool_activity_tree_view10" model="ir.ui.view">
+        <field name="name">mail.activity.tree</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <tree string="Activity">
+                <field name="date_deadline_now" invisible="1"/>
+                <field name="calendar_start_date" invisible="1"/>
+                <field name="date_deadline"/>
+                <field name="calendar_event_id" string="Evento"/>
+                <field name="activity_type_id" string="Tipo de actividad"/>
+                <field name="summary" string="Resumen de la actividad"/>
+                <field name="res_name" string="Título de tarea"/>
+                <field name="res_project_id"/>
+                <field name="note" invisible="1"/>
+                <field name="res_model" invisible="1"/>
+                <field name="user_id"/>
+                <field name="es_usuario_actual"/>
+                <field name="usuario_actual"/>
+                <field name="usuario_actual_id"/>
+                <field name="res_model_id" string="Tipo de documento"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="action_supertool_activity100" model="ir.actions.act_window">
+        <field name="name">Actividades Pendientes de Ejecución</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="supertool_activity_tree_view10"/>
+    </record>
+
+    <!-- PROPJECT.TASK -->
+    <record id="supertool_task_tree_view" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <tree string="Task">
+                <field name="name"/>
+                <field name="plan_ini_date"/>
+                <field name="plan_fin_date"/>
+                <field name="stage_id"/>
+                <field name="real_ini_date"/>
+                <field name="real_fin_date"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="project_id"/>
+                <field name="activity_ids" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_supertool_task" model="ir.actions.act_window">
+        <field name="name">Tareas sin Actividad Pendiente</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="supertool_task_tree_view"/>
+    </record>
+
+
+    <!-- Formulario :: Dashboard Principal -->
+    <record id="board_supertool_main_form" model="ir.ui.view">
+        <field name="name">board.supertool.main.form</field>
+        <field name="model">board.board</field>
+        <field name="arch" type="xml">
+            <form string="Mi Tablero">
+                <board style="1">
+                    <column>
+                        <action name="%(action_supertool_activity100)d" string="Mis actividades pendientes de ejecución" view_mode="list" modifiers="{}" id="supertoolmain1"></action>
+                        <action name="%(action_supertool_task)d" string="Mis tareas sin actividad programada"     view_mode="list" modifiers="{}" id="supertoolmain2"></action>
+                    </column>
+                </board>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="action_open_board_supertool_main">
+        <field name="name">action_open_board_supertool_main</field>
+        <field name="model_id" ref="mail.model_mail_activity"/>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="code">action=model.on_test_server_action()</field>
+    </record>
+
+
+    <!-- Menu :: Dashboard Principal -->
+    <!-- <record id="open_board_supertool_main" model="ir.actions.act_window">
+        <field name="name">Resumen General</field>
+        <field name="res_model">board.board</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="board_supertool_main_form"/>
+    </record> -->
+
+    <menuitem name="" id="menu_dashboard_supertool_main" parent="menu_supertool_root" action="action_open_board_supertool_main" sequence="10"/>
+
+    <record id="mail_activity_view_form_popup" model="ir.ui.view">
+        <field name="name">mail.activity.form.inherit.calendar</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_deadline']" position="after">
+                  <field name="calendar_event_id"/>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_close_dialog']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_done']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+            </xpath>
+            <xpath expr="//button[@special='cancel']" position="attributes">
+                  <attribute name="attrs">{}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="mail_activity_view_search" model="ir.ui.view">
+        <field name="name">mail.activity.search.inherit</field>
+        <field name="model">mail.activity</field>
+        <field name="inherit_id" ref="mail.mail_activity_view_search"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//filter[@name='activities_my']" position="replace">
+                <field name="user_id"/>
+                <filter string="My Activities" name="activities_my" domain="[('user_id', '=', uid)]"/>
+            </xpath>
+
+        </field>
+    </record> -->
+
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='planned_hours']" position="attributes">
+                   <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='remaining_hours']" position="attributes">
+                   <attribute name="invisible">1</attribute>
+            </xpath>
+
+
+            <xpath expr="//field[@name='name']" position="attributes">
+                   <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='sequence']" position="replace"/>
+
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='stage_id']" position="replace"/>
+            <xpath expr="//field[@name='progress']" position="replace"/>
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="plan_ini_date"/>
+                <field name="plan_fin_date"/>
+                <field name="stage_id"/>
+                <field name="real_ini_date"/>
+                <field name="real_fin_date"/>
+                <field name="progress" widget="progressbar"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="replace"/>
+            <xpath expr="//field[@name='project_id']" position="replace"/>
+
+            <xpath expr="//field[@name='progress']" position="after">
+                <field name="user_id" invisible="context.get('user_invisible', False)" readonly="1"/>
+
+                <field name="entregable_id" readonly="1"/>
+                <field name="project_id" invisible="context.get('user_invisible', False)" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">project.task.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <!-- <field name="date_start" readonly="1"/>
+                <field name="date_end" readonly="1"/> -->
+                <field name="plan_ini_date"/>
+                <field name="plan_fin_date"/>
+                <field name="entregable_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+     <record id="project_entregables_view_tree" model="ir.ui.view">
+        <field name="name">project.entregables.tree</field>
+        <field name="model">project.entregables</field>
+        <field name="arch" type="xml">
+            <tree string="Entregables">
+                <field name="sequence" widget="handle" groups="base.group_no_one"/>
+                <field name="project_id"/>
+                <field name="name"/>
+                <field name="task_stage_id"/>
+                <field name="task_plan_ini_date"/>
+                <field name="image" widget="image"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="project_entregables_action" model="ir.actions.act_window">
+        <field name="name">Entregables</field>
+        <field name="res_model">project.entregables</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new entregable.
+          </p><p>
+            Entregables allows to organize tasks.
+          </p>
+        </field>
+    </record>
+
+    <menuitem id="project_entregables_menu" action="project_entregables_action"
+        sequence="70" parent="project.menu_project_management"
+        groups="base.group_no_one"/>
+
+
+
+    <record id="view_task_search_form_inherit" model="ir.ui.view">
+         <field name="name">project.task.search.form.inherit</field>
+         <field name="model">project.task</field>
+         <field name="inherit_id" ref="project.view_task_search_form"/>
+         <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='stage_id']" position="after">
+                    <filter string="Gestión y control" name="gestion" domain="[('project_group_id.tipo','=','tipo1')]"/>
+                    <filter string="Mejora continua" name="mejora" domain="[('project_group_id.tipo','=','tipo2')]"/>
+                    <filter string="Proyectos de inversión" name="projecto" domain="[('project_group_id.tipo','=','tipo3')]"/>
+                    <separator/>
+
+                    <filter string="Mis proyectos" name="my_proyects" domain="[('project_user_id','=',uid)]"/>
+                    <separator/>
+
+                    <filter string="Mi organización" name="my_organization" domain="[('project_user_id','=',uid)]"/>
+                    <filter string="Mi jerarquía" name="mi_jerarquia" domain="[('project_user_id','=',uid)]"/>
+                    <separator/>
+            </xpath>
+
+            <xpath expr="//filter[@name='starred']" position="before">
+                    <filter string="Tareas sin actividad?" name="sinactividad" domain="[('activity_ids','=',False)]"/>
+                    <separator/>
+
+                    <filter string="Es entregable?" name="entregable" domain="[('entregable_id','!=',False)]"/>
+                    <separator/>
+            </xpath>
+
+            <xpath expr="//filter[@name='activities_upcoming_all']" position="after">
+                    <group expand="0" string="Group By">
+                        <filter string="Grupo" name="grupo" context="{'group_by':'project_group_id'}"/>
+                        <filter string="Proceso" name="proceso" context="{'group_by':'project_process_id'}"/>
+                        <filter string="Organización" name="organizacion" context="{'group_by':'project_organization_id'}"/>
+                        <filter string="Responsable de proyecto" name="responsable" context="{'group_by':'project_user_id'}"/>
+                        <filter string="Entregable" name="responsable" context="{'group_by':'entregable_id'}"/>
+                    </group>
+            </xpath>
+
+        </field>
+     </record>
+
+
+    <record id="view_project_project_filter_inherit" model="ir.ui.view">
+         <field name="name">project.project.filter.inherit</field>
+         <field name="model">project.project</field>
+         <field name="inherit_id" ref="project.view_project_project_filter"/>
+         <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='name']" position="after">
+                    <filter string="Gestión y control" name="gestion" domain="[('group_id.tipo','=','tipo1')]"/>
+                    <filter string="Mejora continua" name="mejora" domain="[('group_id.tipo','=','tipo2')]"/>
+                    <filter string="Proyectos de inversión" name="projecto" domain="[('group_id.tipo','=','tipo3')]"/>
+                    <separator/>
+
+                    <filter string="Mis proyectos" name="my_proyects" domain="[('user_id','=',uid)]"/>
+                    <separator/>
+
+                    <filter string="Mi organización" name="my_organization" domain="[('user_id','=',uid)]"/>
+                    <filter string="Mi jerarquía" name="mi_jerarquia" domain="[('user_id','=',uid)]"/>
+                    <separator/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                    <group expand="0" string="Group By">
+                        <filter string="Grupo" name="grupo" context="{'group_by':'group_id'}"/>
+                        <filter string="Proceso" name="proceso" context="{'group_by':'process_id'}"/>
+                        <filter string="Organización" name="organizacion" context="{'group_by':'organization_id'}"/>
+                    </group>
+            </xpath>
+
+
+        </field>
+     </record>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

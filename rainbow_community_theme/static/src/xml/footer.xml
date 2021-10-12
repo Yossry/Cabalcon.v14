@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="Footer">
+        <div class="o_footer">
+             <div class="o_footer_inner">
+                <!-- <a data-link="poweredby" target="_blank">
+                    Powered by Odoo
+                </a>                
+                <span data-link="documentation">|</span>                
+                <a data-link="documentation" >
+                    Documentation
+                </a>
+                <span data-link="documentation_dev">|</span>
+                <a data-link="documentation_dev" target="_blank">
+                    Developer Manual
+                </a> -->
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Footer.Link">
+        <a data-link="poweredby" >
+            <t t-esc="poweredby_text"/>
+        </a>        
+        <span data-link="documentation">|</span>        
+        <a data-link="documentation"  >
+            Documentation
+        </a>
+        <span data-link="documentation_dev">|</span>
+        <a data-link="documentation_dev">
+            Developer Manual
+        </a>
+        <div class="system_info">
+            <span class="system_name">
+                <t t-esc="system_name"/>
+            </span>
+            <span>:</span>
+            <span class="system_version">
+                <t t-esc="system_version"/>
+            </span>
+        </div>
+        
+    </t>
+
+    <t t-name="GoTop">
+        <div class="scroll-to-top">
+            <i class="fa fa-chevron-circle-up" title="GoTop"></i>
+        </div>
+    </t>
+  
+</templates>

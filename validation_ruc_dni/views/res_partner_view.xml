@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- PARTNER SEARCH -->
+        <record id="view_res_partner_filter_pe" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <!-- Búsquedas -->
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" filter_domain="['|','|','|',('display_name','ilike',self),('ref','=',self),('vat','ilike',self),('email','ilike',self)]"/>
+                    <field name="l10n_latam_identification_type_id" filter_domain="[('l10n_latam_identification_type_id','ilike',self)]"/>
+                    <field name="company_id" filter_domain="[('company_id','ilike',self)]"/>
+                </xpath>
+                <!-- Filtros -->
+                <xpath expr="//filter[@name='supplier']" position="after">
+                    <separator/>
+                    <filter string="Contactos de Empresas" name="filter_contact" domain="[('type','=','contact'), ('parent_id', '!=', False)]"/>
+                    <filter string="Direc. Envío de Factura" name="filter_invoice" domain="[('type','=','invoice'), ('parent_id', '!=', False)]"/>
+                    <filter string="Direc. Entrega de Productos" name="filter_delivery" domain="[('type','=','delivery'), ('parent_id', '!=', False)]"/>
+                    <filter string="Direc. Locales o Ptos. Venta" name="filter_other" domain="[('type','=','other'), ('parent_id', '!=', False)]"/>
+                </xpath>
+                <!-- Agrupadores -->
+                <xpath expr="//filter[@name='salesperson']" position="before">
+                    <filter name="group_type" string="Tipo de Contacto" domain="[]" context="{'group_by': 'type'}" />
+                    <filter name="group_l10n_latam_identification_type_id" string="Tipo de Documento" domain="[]" context="{'group_by': 'l10n_latam_identification_type_id'}" />
+                    <filter name="group_state" string="Estado" domain="[]" context="{'group_by': 'state'}" />
+                    <filter name="group_create_date" string="Fecha Creación" domain="[]" context="{'group_by': 'create_date'}" />
+                    <filter name="group_create_uid" string="Creado por" domain="[]" context="{'group_by': 'create_uid'}" />
+                </xpath>
+            </field>
+        </record>
+
+        <!-- PARTNER KANBAN -->        
+        <record id="res_partner_kanban_view_pe" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='title']" position="before">
+                    <field name="name"/>
+                </xpath>
+                <xpath expr="//kanban/templates/t/div/div/strong/field[@name='display_name']" position="replace">
+                    <field name="display_name" invisible="1"/>
+                    <field name="name"/>
+                </xpath>
+                <ul position="inside">
+                    <li t-if="record.mobile.raw_value"><i class="fa fa-mobile"></i> <field name="mobile"/></li>
+                    <li t-if="record.phone.raw_value"><i class="fa fa-phone"></i> <field name="phone"/></li>
+                </ul>
+            </field>
+        </record>
+        
+        <!-- PARTNER TREE -->
+        <record id="view_partner_tree_pe" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='display_name']" position="replace">
+                    <field name="ref" string="Código" invisible="1"/>
+                    <field name="name" string="Name"/>
+                    <field name="display_name" string="Name" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="l10n_latam_identification_type_id"/>
+                    <field name="vat"/>
+                    <field name="type" string="Tipo"/>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="mobile"/>
+                </xpath>
+                <xpath expr="//field[@name='active']" position="after">
+                    <field name="state"/>
+                    <field name="create_uid"/>
+                    <field name="create_date" string="Fecha Creación"/>
+                    <field name="write_date" string="Fecha Modificación"/>
+                    <field name="company_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- PARTNER FORM -->
+        <record id="view_partner_form_pe" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <sheet position="before">
+                    <header>
+                        <button string="Consultar datos" type="object" name="valida_document"/>
+                    </header>
+                </sheet>
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" default_focus="1" placeholder="Razón Social o Nombre" attrs="{'required' : [('type', '=', 'contact')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <h3>
+                        <field name="commercial_name" placeholder="Nombre Comercial" nolabel="1" attrs="{'invisible': [('is_company','=',False)]}"/>
+                    </h3>
+                </xpath>
+                <xpath expr="//field[@name='industry_id']" position="replace"/>
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="industry_id" attrs="{'invisible': [('parent_id', '!=', False)]}" options="{'no_create': True}"/>
+                    <field name="state"/>
+                </xpath>
+                <!--
+                <xpath expr="//field[@name='vat']" position="replace">
+                    <field name="vat" placeholder="Nro Documento" class="oe_inline" attrs="{'readonly': [('parent_id','!=',False)]}"/>
+                </xpath>
+            -->
+         <!--
+
+                <xpath expr="//field[@name='l10n_latam_identification_type_id']" position="replace"/>
+                <xpath expr="//field[@name='name']" position="after">
+                    <label for="l10n_latam_identification_type_id" string="Nro Identificación"/>
+                    <div class="o_row">
+                        <field name="l10n_latam_identification_type_id" placeholder="Tipo Documento" colspan="1" nolabel="1" widget="selection" attrs="{'required': ['|', '|', ('is_company','=',True), ('is_customer','=',True), ('is_supplier','=',True), ('parent_id', '=', False)], 'invisible': [('parent_id', '!=', False)]}"/>
+                        <field name="vat" placeholder="Nro Documento" colspan="1" nolabel="1" attrs="{'required': ['|', '|', ('is_company','=',True), ('is_customer','=',True), ('is_supplier','=',True), ('parent_id', '=', False)], 'invisible': [('parent_id', '!=', False)]}"/>
+                    </div>
+                -->
+            </field>
+        </record>
+    </data>
+</odoo>

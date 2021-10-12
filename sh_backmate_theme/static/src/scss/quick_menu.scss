@@ -1,0 +1,26 @@
+.o_user_bookmark_menu a{color:white !important}
+
+.sh_wqm_remove_quick_menu_cls i:hover{color:#F06050}
+
+.expand_img{
+	margin-top: 0px; 
+	height: 15px;
+    width: 15px;
+}
+.compress_img{
+	 height: 15px;
+    width: 15px;
+	display:none;
+	position: relative;top: 30%;
+}
+nav.o_main_navbar .o_menu_systray li.o_full_screen .expand_img{height: 100%;object-fit: contain;text-align: center;margin: auto;line-height: 25px;}
+nav.o_main_navbar .o_menu_systray li.o_full_screen .expand_img{height: 100%;object-fit: contain;text-align: center;margin: auto;}
+nav.o_main_navbar .o_menu_systray li.o_full_screen .expand_img{line-height: 25px;}
+
+#fullscreen_checkbox{
+	display:none;
+}
+
+
+
+

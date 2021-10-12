@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="lock_assets" inherit_id="web.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/lock/lock.scss" />
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <!-- <script type="text/javascript" src="/rainbow_community_theme/static/lib/backstretch/jquery.backstretch.min.js"></script> -->
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/pages/lock.js"></script>
+        </xpath>
+    </template>
+
+    <template id="lock1" name="Lock Screen Theme 1">
+        <t t-call="rainbow_community_theme.rainbow_frontend_layout">
+            <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+            <t t-set="body_classname" t-value="'bg-lock1'"/>
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+            <div class="page-lock1">
+                <div class="page-logo">
+                    <a class="brand">
+                        <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" style="max-height:27px;  width:auto"/>
+                    </a>
+                </div>
+                <div class="page-body">
+                    <div class="lock-head"> 
+                        <span class="locked fa fa-lock text-warning"> Locked </span>
+                    </div>
+                    <div class="lock-body">
+                        <div class="lock-cont">
+                            <div class="lock-item">
+                                <div class="pull-left lock-avatar-block">
+                                    <img class="lock-avatar"/>
+                                </div>
+                            </div>
+                             <div class="lock-item lock-item-full">
+                                 <form class="lock-form pull-left" role="form">
+                                    <h4/>
+                                    <span class="email"/>
+                                    <span class="mobile"/>
+                                    <div class="alert alert-danger display-hide">
+                                        <span>
+                                            <t t-esc="error"/>
+                                        </span>
+                                        <button class="close" data-close="alert"></button>
+                                    </div>
+                                    <div class="form-group">
+                                    <!-- autocomplete="new-password" --><!-- autocomplete="off" -->
+                                        <input type="text" class="form-control  placeholder-no-fix" maxlength="4096" disguising-password="" autocomplete="off" name="password" id="password" placeholder="Password"/>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button class="btn red uppercase submit">Login</button>
+                                    </div>
+                                 </form>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="lock-bottom">
+                        <a>Not <span class="lock-name font-weight-bold"/>?</a>
+                    </div>
+                </div>
+                <div class="page-footer-custom"> 
+                    <a href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" target="_blank">Powered by <span>Odoo</span>
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="lock2" name="Lock Screen Theme 2">
+        <t t-call="rainbow_community_theme.rainbow_frontend_layout">
+            <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+            <t t-set="body_classname" t-value="'bg-lock2'"/>
+            <t t-set="no_header" t-value="True"/>
+            <t t-set="no_footer" t-value="True"/>
+
+            <div class="page-lock2">
+                <div class="page-logo">
+                    <a class="brand">
+                        <img t-attf-src="/web/binary/company_logo{{ '?dbname='+db if db else '' }}" alt="Logo" style="max-height:17px; max-width: 100%; width:auto"/>
+                    </a>
+                </div>
+                <div class="page-body">
+                    <img class="page-lock-img" alt=""/>
+                    <div class="page-lock-info">
+                        <h1/>
+                        <span class="email"/>
+                        <span class="mobile"/>
+                        <span class="locked fa fa-lock text-warning"> Locked </span>
+                        <form class="form-inline" role="form">
+                            <div class="alert alert-danger display-hide">
+                                <span>
+                                    <t t-esc="error"/>
+                                </span>
+                                <button class="close" data-close="alert"></button>
+                            </div>
+                            <div class="input-group input-medium">
+                                <!-- autocomplete="new-password" --><!-- autocomplete="off" -->
+                                <input type="text" class="form-control" maxlength="4096" autocomplete="off"  disguising-password="" name="password" id="password" placeholder="Password"/>
+                                <span class="input-group-btn">
+                                    <button  class="btn green icn-only submit">
+                                        <i class="fa fa-unlock-alt"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="relogin">
+                                <a> 
+                                    Not <span class="lock-name font-weight-bold"/>?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="page-footer-custom">
+                    <t t-set="url" t-value="request.env['ir.http'].sudo().get_poweredby_url()"/>
+                    <t t-set="text" t-value="request.env['ir.http'].sudo().get_poweredby_text()"/>
+                    
+                    <a t-attf-href="{{url}}" target="_blank"> <span t-esc="text"/>
+                    </a>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="DrawerMenu" owl="1">
+        <div class="o_drawer_menu" >
+            <div class="o_menu_search">
+                <span class="fa fa-search o_menu_search_icon" role="img" aria-label="Search" title="Search"/>
+                <input t-ref="input" type="text" placeholder="Search..." class="o_menu_search_input" t-on-input="_onInputSearch"
+                    role="combobox"
+                    t-att-aria-activedescendant="state.isSearching and (appIndex === null ? 'result_menu_' + menuIndex : 'result_app_' + appIndex)"
+                    t-att-aria-expanded="state.isSearching ? 'true' : 'false'"
+                    aria-autocomplete="list"
+                    aria-haspopup="listbox"
+                />
+                
+                <span class="o_drawer_menu_drag_tips text-warning">
+                    <t t-if="isMobile">
+                        <i class="fa fa-arrow-down text-warning"/>
+                        You can drag the icon to the bottom menu.
+                    </t>
+                    <t t-else="">
+                        <i class="fa fa-arrow-left text-warning"/>
+                        You can drag the icon to the sidebar menu on the left.
+                    </t>                    
+                </span>
+            </div>
+            
+            <div class="o_drawer_menu_scrollable" t-ref="mainContent">
+                <t t-if="enableCategory">
+                    <!-- 开启类别 -->
+                    <t t-foreach="categoryData" t-as="category">
+                        <div class="o_apps_category">
+                            <h2 class="breadcrumb-item active">
+                                <t t-esc="category.name" />
+                            </h2>
+                        </div>
+                        <div role="listbox" class="o_apps">
+                            <t t-foreach="displayedApps" t-as="app">
+                                <a t-if="app.category_id==category.id"
+                                    t-att-id="'result_app_' + app_index"
+                                    role="option"
+                                    t-att-aria-selected="appIndex === app_index ? 'true' : 'false'"
+                                    class="o_app o_menuitem"
+                                    t-att-class="{o_focused: appIndex === app_index}"
+                                    t-att-data-menu-xmlid="app.xmlid"
+                                    t-att-href="app.href || ('#menu_id='+app.id+'&amp;action_id='+app.action)"
+                                    t-key="app.id"
+                                    t-on-click.prevent="_onAppClick(app)"
+                                >
+                                    <div t-if="app.webIconData" class="o_app_icon"
+                                        t-attf-style="background-image: url('{{app.webIconData}}');"
+                                    />
+                                    <div t-else="" class="o_app_icon"
+                                        t-attf-style="background-color: {{app.webIcon.backgroundColor}};"
+                                        >
+                                        <i t-att-class="app.webIcon.iconClass" t-attf-style="color: {{app.webIcon.color}};"/>
+                                    </div>
+                                    <div class="o_caption" t-esc="app.label"/>
+                                </a>
+                            </t>
+                        </div>
+                    </t>
+                    <div class="o_apps_category">
+                        <h2 class="breadcrumb-item active">
+                            Other
+                        </h2>
+                    </div>
+                    <div role="listbox" class="o_apps">
+                        <t t-foreach="displayedApps" t-as="app">
+                            <a t-if="app.category_id==0"
+                                t-att-id="'result_app_' + app_index"
+                                role="option"
+                                t-att-aria-selected="appIndex === app_index ? 'true' : 'false'"
+                                class="o_app o_menuitem"
+                                t-att-class="{o_focused: appIndex === app_index}"
+                                t-att-data-menu-xmlid="app.xmlid"
+                                t-att-href="app.href || ('#menu_id='+app.id+'&amp;action_id='+app.action)"
+                                t-key="app.id"
+                                t-on-click.prevent="_onAppClick(app)"
+                            >
+                                <div t-if="app.webIconData" class="o_app_icon"
+                                    t-attf-style="background-image: url('{{app.webIconData}}');"
+                                />
+                                <div t-else="" class="o_app_icon"
+                                    t-attf-style="background-color: {{app.webIcon.backgroundColor}};"
+                                    >
+                                    <i t-att-class="app.webIcon.iconClass" t-attf-style="color: {{app.webIcon.color}};"/>
+                                </div>
+                                <div class="o_caption" t-esc="app.label"/>
+                            </a>
+                        </t>
+                    </div>
+                </t>
+                <t t-else="">
+                    <!-- 关闭类别 -->
+                    <div t-if="displayedApps.length" role="listbox" class="o_apps">
+                        <a t-foreach="displayedApps" t-as="app"
+                            t-att-id="'result_app_' + app_index"
+                            role="option"
+                            t-att-aria-selected="appIndex === app_index ? 'true' : 'false'"
+                            class="o_app o_menuitem"
+                            t-att-class="{o_focused: appIndex === app_index}"
+                            t-att-data-menu-xmlid="app.xmlid"
+                            t-att-href="app.href || ('#menu_id='+app.id+'&amp;action_id='+app.action)"
+                            t-key="app.id"
+                            t-on-click.prevent="_onAppClick(app)"
+                            >
+                            <div t-if="app.webIconData" class="o_app_icon"
+                                t-attf-style="background-image: url('{{app.webIconData}}');"
+                            />
+                            <div t-else="" class="o_app_icon"
+                                t-attf-style="background-color: {{app.webIcon.backgroundColor}};"
+                                >
+                                <i t-att-class="app.webIcon.iconClass" t-attf-style="color: {{app.webIcon.color}};"/>
+                            </div>
+                            <div class="o_caption" t-esc="app.label"/>
+                        </a>
+                    </div>
+                    
+                </t>
+                <div t-if="displayedMenuItems.length" role="listbox" class="o_menuitems">
+                    <a t-foreach="displayedMenuItems" t-as="menu"
+                        t-att-id="'result_menu_' + menu_index"
+                        role="option"
+                        t-att-aria-selected="menuIndex === menu_index ? 'true' : 'false'"
+                        class="o_menuitem"
+                        t-att-class="{o_focused: menuIndex === menu_index}"
+                        t-att-href="menu.href ? menu.href : ('#menu_id='+menu.id+'&amp;action_id='+menu.action)"
+                        t-key="menu.id"
+                        t-on-click.prevent="_onMenuitemClick(menu)"
+                        >
+                        <span class="o_menuitem_parents"><t t-esc="menu.parents"/> / </span>
+                        <t t-esc="menu.label"/>
+                    </a>
+                </div>
+                <div t-elif="!displayedApps.length" id="result_menu_0" role="option" aria-selected="true" class="o_no_result">
+                    No result
+                </div>
+                <div class="o_drawer_menu_footer">
+                    <img src="/web/binary/company_logo" alt="Logo"/>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="DrawerMenuWrapper" owl="1">
+        <DrawerMenu mode="state.mode" isMobile="state.isMobile" apps="state.apps" menuItems="state.menuItems"  enableCategory="state.enableCategory" categoryData="state.categoryData" t-att-style="state.style"/>
+    </t>
+
+</templates>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_partner_form">
+        <field name="name">res.partner.view.form.inherit.l10n.pe.vat</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button string="Update RUC/DNI" type="object" name="update_document" context="{'force_update':True}" />
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="ACTIVO,BAJA DE OFICIO" statusbar_colors="{'ACTIVO':'green','BAJA DE OFICIO':'red','BAJA PROVISIONAL':'red','SUSPENSION TEMPORAL':'red'}" />
+                </header>
+            </sheet>
+            <xpath expr="//h1" position="after">
+                <div class="o_row">
+	                <field name="doc_type" placeholder="Document Type" colspan="1" nolabel="1" style="width: 70%" />
+	                <field name="doc_number" placeholder="Document number" colspan="3" nolabel="1" style="width: 29%" />
+	            </div>            
+	        </xpath>
+            <xpath expr="//field[@name='lang']" position="after">
+                <field name="condition" attrs="{'invisible': [('is_company','=',False)]}" />
+                <field name="vat" invisible="True" />
+                <field name="is_validate" invisible="True" />
+            </xpath>
+            
+            <xpath expr="//page[@name='sales_purchases']" position="after">
+            	<page name="sunat_details" string="SUNAT" attrs="{'invisible': [('is_company','=',False)]}">
+	                <group name="container_sunat_general" attrs="{'invisible': [('is_company','=',False)]}">
+	                    <group string="General information">
+	                        <field name="legal_name" placeholder="Legal Name" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)], 'readonly': [('is_validate','=',True)]}" />
+	                        <field name="commercial_name" placeholder="Tradename" attrs="{'invisible': [('is_company','=',False)],'required': [('is_company','=',True)], 'readonly': [('is_validate','=',True)]}" />
+	                        <field name="type_taxpayer" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="emission_system" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="accounting_system" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="last_update" attrs="{'invisible': [('is_company','=',False)]}" />
+	                    </group>
+	                    <group string="Retention Agent">
+	                        <field name="retention_agent" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="retention_agent_from" attrs="{'invisible': [('is_company','=',False)]}" />
+	                        <field name="retention_agent_resolution" attrs="{'invisible': [('is_company','=',False)], 'readonly': [('is_validate','=',True)]}" />
+	                    </group>
+	                    <!--separator string="Aconomic Pctivities" colspan="2" /-->
+	                </group>
+	                <group name="container_sunat_ciiu" string="Aconomic Ectivities" attrs="{'invisible': [('is_company','=',False)]}">
+	                    <field name="main_activity" options="{'no_create_edit': True}" attrs="{'invisible': [('is_company','=',False)]}" />
+	                    <field name="activities_ids" options="{'no_create_edit': True}" widget="many2many_tags" attrs="{'invisible': [('is_company','=',False)]}" />
+	                </group>
+	                <separator string="Representatives"/>
+	                <field name="representative_ids" attrs="{'invisible': [('is_company','=',False)]}" >
+	                    <tree editable="bottom" string="Representatives">
+	                        <field name="doc_type"/>
+	                        <field name="doc_number"/>
+	                        <field name="name"/>
+	                        <field name="position"/>
+	                        <field name="date_from"/>
+	                    </tree>
+	                </field>
+                </page>
+	        </xpath>
+        </field>
+    </record>
+
+</odoo>

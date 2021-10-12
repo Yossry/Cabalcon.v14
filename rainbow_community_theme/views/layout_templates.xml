@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="webclient_bootstrap" inherit_id="web.webclient_bootstrap">
+        <!-- <t t-set="theme" t-value="request.env['ir.http'].get_user_theme_color()"/> -->
+        <xpath expr="//t[@t-set='body_classname']" position="replace">
+            <t t-set="theme" t-value="request.env['ir.http'].get_body_class()"/>
+            <t t-set="body_classname" t-value="'o_web_client %s' % (theme)"/>
+        </xpath>
+        <xpath expr="//t[@t-set='body_classname']" position="after">
+            <div class="o_main"/>
+        </xpath>
+        <xpath expr="//t[@t-set='head']" position="after">
+            <t t-set="head_rainbow">
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                <!-- Chrome, Firefox OS and Opera -->
+                <meta name="theme-color" content="#875A7B"/>
+                <t t-set="android_touch_icon" t-value="request and request.env['ir.config_parameter'].sudo().get_param('rainbow.android_touch_icon', '')"/>
+                <link rel="icon" sizes="192x192" t-att-href="android_touch_icon"/>
+
+                <!-- iOS Safari -->
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+                <t t-set="apple_touch_icon" t-value="request and request.env['ir.config_parameter'].sudo().get_param('rainbow.apple_icon', '')"/>
+                <link rel="apple-touch-icon" t-att-href="apple_touch_icon"/>
+
+                <!-- Windows Phone -->
+                <meta name="msapplication-navbutton-color" content="#875A7B"/>
+                <meta name="msapplication-TileColor" content="#875A7B"/>
+                <t t-set="windows_touch_icon" t-value="request and request.env['ir.config_parameter'].sudo().get_param('rainbow.windows_touch_icon', '')"/>
+                <meta name="msapplication-TileImage" t-att-content="windows_touch_icon"/>
+            </t>
+            <t t-set="head" t-value="head_rainbow + (head or '')"/>
+        </xpath>
+        
+    </template>
+
+    <template id="layout" inherit_id="web.layout">
+        <xpath expr="//title" position="replace">
+            <t t-set="web_title" t-value="request and request.env['ir.config_parameter'].sudo().get_param('rainbow.system_name', '')"/>
+            <title t-esc="title or web_title" />
+        </xpath>      
+    </template>
+
+    <template id="webclient_login" inherit_id="web.login_layout">
+        <xpath expr="//t[@t-call='web.frontend_layout']/t[last()]" position="after">
+            <t t-set="body_classname" t-value="'o_drawer_menu_background'"/>
+            <t t-set="login_card_classes" t-value="'rounded-0 shadow-sm bg-white'"/>
+        </xpath>
+    </template>
+
+    <template id="rainbow_frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
+        <xpath expr="//head/meta[last()]" position="after">
+            <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        </xpath>
+        <xpath expr="//head/link[last()]" position="after">
+            <link rel="preload" href="/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+            <t t-call-assets="web.assets_common" t-js="false"/>
+            <t t-call-assets="web.assets_frontend" t-js="false"/>
+        </xpath>
+        <xpath expr="//head/script[@id='web.layout.odooscript'] | //head/script[last()]" position="after">
+            <script type="text/javascript">
+                odoo.session_info = <t t-raw="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>;
+                if (!/(^|;\s)tz=/.test(document.cookie)) {
+                    const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                    document.cookie = `tz=${userTZ}; path=/`;
+                }
+            </script>
+            <t t-call-assets="web.assets_common_minimal_js" t-css="false" defer_load="True"/>
+            <t t-call-assets="web.assets_frontend_minimal_js" t-css="false" defer_load="True"/>
+            <t t-call="web.conditional_assets_tests"/>
+            <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True"/>
+            <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+        </xpath>
+        <xpath expr="//t[@t-raw='0']" position="replace">
+            <t t-raw="0"/>
+        </xpath>
+    </template>
+</odoo>

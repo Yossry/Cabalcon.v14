@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Fiscal Year -->
+        <record id="view_account_fiscalyear_periods_form" model="ir.ui.view">
+            <field name="name">account.fiscalyear.periods.form</field>
+            <field name="model">account.fiscalyear.periods</field>
+            <field name="arch" type="xml">
+                <form string="Año Fiscal">
+                    <header>
+                        <button name="create_periods" states="draft" string="Crear Periodos" type="object" class="oe_highlight" groups="account_fiscal_year_period.group_fiscal_year_create"/>
+                        <button name="open" states="draft" string="Abrir" type="object" class="oe_highlight" groups="account_fiscal_year_period.group_fiscal_year_create"/>
+                        <button name="done" states="open" string="Cerrar" type="object" class="oe_highlight" confirm="Desea cerrar el Año y sus Periodos?" groups="account_fiscal_year_period.group_fiscal_year_close"/>
+                        <button name="set_to_draft" states="open,done" string="Pasar a Borrador" type="object" class="oe_highlight" groups="account_fiscal_year_period.group_fiscal_year_create"/>
+                        <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,open" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" force_save="1"/>
+                                <field name="fiscal_year_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                                <field name="company_id" groups="base.group_multi_company" readonly='1'/>
+                            </group>
+                            <group>
+                                <field name="date_start" required="1" readonly="1"/>
+                                <field name="date_stop" required="1" readonly="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Periodos">
+                                <field colspan="4" name="period_ids" nolabel="1" widget="one2many_list" attrs="{'readonly':[('state','!=','open')]}">
+                                    <tree colors="blue:parent.state == 'draft';green:special==True;gray:special !=true"  string="Periodo" editable="bottom" create="false" delete="false">
+                                            <field name="sequence" readonly="1"/>
+                                            <field name="code" readonly="1"/>
+                                            <field name="date_start" readonly="1"/>
+                                            <field name="date_stop" readonly="1"/>
+                                            <field name="special" groups="account_fiscal_year_period.group_fiscal_year_open_close"/>
+                                    </tree>
+                                </field>
+                                </page>
+                            </notebook>
+                        <div>
+                            <label for="comments"/>
+                            <field name="comments" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        </div>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_month_period_view_form" model="ir.ui.view">
+            <field name="name">account.month.period.view.form</field>
+            <field name="model">account.month.period</field>
+            <field name="arch" type="xml">
+                <form string="Periodos">
+                    <sheet>
+                        <group>
+                            <field name="sequence" readonly="1"/>
+                            <field name="code" readonly="1"/>
+                            <field name="date_start" readonly="1"/>
+                            <field name="date_stop" readonly="1"/>
+                            <field name="special"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_fiscalyear_periods_tree" model="ir.ui.view">
+            <field name="name">account.fiscalyear.periods.tree</field>
+            <field name="model">account.fiscalyear.periods</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-success="state == 'open'" string="Año Fiscal">
+                    <field name="code"/>
+                    <field name="fiscal_year_id"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="state"/>
+                    <field name="date_start"/>
+                    <field name="date_stop"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--record id="view_account_fiscalyear_periods_search" model="ir.ui.view">
+            <field name="name">account.fiscalyear.periods.search</field>
+            <field name="model">account.fiscalyear.periods</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Año Fiscal">
+                    <field name="fiscal_year_id"  string="Año Fiscal"/>
+                    <filter string="Abrir" domain="[('state','=','open')]"/>
+                    <filter string="Cerrar" domain="[('state','=','done')]"/>
+                    <field name="state"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Estado" context="{'group_by': 'state'}"/>
+                        <filter sting="Año Fiscal" context="{'group_by':'fiscal_year_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record-->
+
+        <record id="action_account_fiscalyear" model="ir.actions.act_window">
+            <field name="name">Periodos de Año Fiscal</field>
+            <field name="res_model">account.fiscalyear.periods</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clic para comenzar un nuevo Año Fiscal con sus Periodos.
+                </p>
+                <p>
+                Defina el Año Financiero de su Empresa de acuerdo con sus necesidades. Un
+                Año Financiero es un periodo al final del cual se componen las cuentas
+                de una Empresa (generalmente 12 meses). El Año Financiero es
+                generalmente referido por la fecha en que finaliza. Por ejemplo,
+                si el Año Financiero de una Empresa finaliza el 30NOV2020, entonces
+                todo entre 01DIC2019 al 30NOV2020 se denominará FY2020.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_action_account_fiscalyear" 
+            name="Periodos de Año Fiscal" 
+            action="action_account_fiscalyear" 
+            parent="account_fiscal_year_period.account_fiscal_year"/>
+    </data>
+</odoo>

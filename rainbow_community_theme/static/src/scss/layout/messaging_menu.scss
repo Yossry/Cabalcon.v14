@@ -1,0 +1,83 @@
+.o_MessagingMenu.dropdown-dark {
+    // background: $o-header-dropdown-dark-bg-color !important;
+
+    >.o_MessagingMenu_dropdownMenu {
+        .o_MessagingMenu_dropdownMenuHeader {
+            background: $o-header-dropdown-dark-bg-header-bg-color !important;
+            border-bottom: 0 !important;
+
+            >button {
+                &:hover {
+                    color: $o-header-dropdown-dark-item-bg-color-on-hover;
+                }
+            }
+        }
+
+        >.o_MessagingMenu_notificationList {
+
+            >.o_NotificationList_preview,
+            .o_NotificationGroup {
+                background: transparent !important;
+
+                &:hover {
+                    background: darken($o-header-dropdown-dark-notification-time-bg-color, 5%) !important;
+                }
+
+
+                .o_ThreadPreview_content,
+                .o_NotificationGroup_content {
+                    >.o_ThreadPreview_header {
+                        .o_ThreadPreview_name {
+                            color: $o-header-dropdown-dark-message-font-color !important;
+                        }
+
+                        .o_ThreadPreview_date {
+                            background: $o-header-dropdown-dark-notification-time-bg-color !important;
+                        }
+
+                        .o_ThreadPreview_date {
+                            background: $o-header-dropdown-dark-notification-time-bg-color !important;
+                        }
+                    }
+                }
+
+                .o_ThreadPreview_core {
+                    .o_ThreadPreview_coreItem {}
+                }
+            }
+        }
+    }
+}
+
+.o_style_default,
+.o_style_darkblue,
+.o_style_blue,
+.o_style_lightblue,
+.o_style_grey,
+.o_style_light,
+.o_style_light2,
+.o_style_purplishred {
+    .o_MessagingMenu_counter {
+        background: $o-header-top-menu-badge-bg-color !important;
+        color: $o-header-top-menu-badge-font-color !important;
+        font-weight: 300;
+    }
+}
+
+.o_sidebar_mode {
+    .o_MessagingMenu_dropdownMenu {
+
+        &.o-mobile {
+            flex: 1 1 auto;
+            position: fixed;
+            top: $o-mail-chat-window-header-height-mobile*2;
+            bottom: 0;
+            // bottom: $o-footer-height;
+            left: 0;
+            right: 0;
+            width: 100%;
+            margin: 0;
+            max-height: none;
+        }
+    }
+}

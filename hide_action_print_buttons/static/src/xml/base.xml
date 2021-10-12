@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates id="template" xml:space="preserve">
+        <t t-name="CustomActionPrintButtons" t-inherit="web.ActionMenus" t-inherit-mode="extension">
+            <xpath expr="//div[hasclass('o_cp_action_menus')]/DropdownMenu[1]" position="replace">
+                    <DropdownMenu t-if="printItems.length and ShowPrint"
+                                  title="env._t('Print')"
+                                  items="printItems"
+                                  icon="'fa fa-print'"
+                    />
+            </xpath>
+            <xpath expr="//div[hasclass('o_cp_action_menus')]/DropdownMenu[2]" position="replace">
+                     <DropdownMenu t-if="actionItems.length and ShowAction"
+                                  title="env._t('Action')"
+                                  items="actionItems"
+                                  icon="'fa fa-cog'"
+                                  closeOnSelected="true"
+                    />
+            </xpath>
+        </t>
+    </templates>

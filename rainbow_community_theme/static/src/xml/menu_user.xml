@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="UserMenu.Actions">
+        <t t-jquery="a[data-menu='documentation']" t-operation="before">
+            <div class="o_user_menu_card card mb-3">
+                <div class="card-header">
+                    <h4 class="o_user_menu_card_name" t-esc="name"/>
+                </div>
+                <div class="row no-gutters card-body">
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <img class="o_user_menu_card_avatar" t-att-src="_s+'/web/static/src/img/user_menu_avatar.png'" alt="User"/>
+                    </div>
+                    <div class="col-md-8 o_user_menu_card_contact_details">
+                        <div class="card-text">
+                            <i class="bi-flag" style="font-size:1.2rem;color:#F64E60;"></i>
+                            <span class="o_user_menu_card_titel" t-esc="title"/>
+                        </div>
+                        <div class="card-text">
+                            <i class="bi-phone" style="font-size:1.2rem;color:#FFA800;"></i>
+                            <span class="o_user_menu_card_mobile"/>
+                        </div>
+                        <div class="card-text">
+                            <i class="bi-telephone" style="font-size:1.2rem;color:#c8d046;"></i>
+                            <span class="o_user_menu_card_phone"/>
+                        </div>
+                        <div class="card-text">
+                            <i class="bi-envelope" style="font-size:1.2rem;color:#3699FF;"></i>
+                            <span class="o_user_menu_card_mail"/>
+                        </div>
+                        <div class="card-text">
+                            <i class="bi-signpost" style="font-size:1.2rem;color:#1BC5BD;"></i>
+                            <span class="o_user_menu_card_location"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button data-menu="settings" class="btn btn-primary">
+                        <i class="fa fa-user-circle-o"/> My Profile
+                    </button>
+                    <button data-menu="lock" class="btn btn-warning">
+                        <i class="fa fa-lock"/> Lock Screen
+                    </button>
+                    <button data-menu="logout" class="btn btn-danger">
+                        <i class="fa fa-sign-out"/> Log out
+                    </button>
+                </div>
+            </div>
+            <a role="menuitem" href="#" data-menu="debug" class="dropdown-item">
+                <i class="fa fa-bug"/> Activate the developer mode
+            </a>
+            <a role="menuitem" href="#" data-menu="debugassets" class="dropdown-item">
+                <i class="fa fa-bug"/> Activate the developer mode (with assets)
+            </a>
+            <a role="menuitem" href="#" data-menu="quitdebug" class="dropdown-item">
+                <i class="fa fa-bug"/> Deactivate the developer mode
+            </a>
+            <div role="separator" class="dropdown-divider"/>
+        </t>
+        <t t-jquery="a[data-menu='documentation']" t-operation="replace">
+            <a role="menuitem" href="#" data-menu="documentation" class="dropdown-item">
+                <i class="fa fa-book"/> Documentation
+            </a>
+        </t>
+        <t t-jquery="a[data-menu='documentation']" t-operation="after">
+            <a role="menuitem" href="#" data-menu="documentation_dev" class="dropdown-item">
+                <i class="fa fa-book"/> Developer Manual
+            </a>
+        </t>
+        <t t-jquery="a[data-menu='support']" t-operation="replace">
+            <a role="menuitem" href="#" data-menu="support" class="dropdown-item">
+                <i class="fa fa-handshake-o"/> Support
+            </a>
+        </t>
+        <t t-jquery="a[data-menu='settings']" t-operation="replace"/>
+
+        <t t-jquery="a[data-menu='account']" t-operation="replace">
+            <a role="menuitem" href="#" data-menu="account" class="dropdown-item">
+                <i class="fa fa-ticket"/> My Online Account
+            </a>
+        </t>
+        <t t-jquery="a[data-menu='logout']" t-operation="replace"/>
+        <t t-jquery="a[data-menu='shortcuts']" t-operation="replace">
+            <a role="menuitem" href="#" data-menu="shortcuts" class="dropdown-item d-none d-md-inline-block">
+                <i class="fa fa-keyboard-o"/> Shortcuts
+            </a>
+        </t>
+    </t>
+    <t t-extend="UserMenu.shortcuts">
+        <t t-jquery="tr:last" t-operation="after">
+            <tr>
+                <td align="left">Toggle drawer menu</td>
+                <td>
+                    <span class="o_key">Alt</span>
+                    +
+                    <span class="o_key">h</span>
+                </td>
+                <td>
+                    <span class="o_key">Control</span>
+                    +
+                    <span class="o_key">Alt</span>
+                    +
+                    <span class="o_key">h</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">Toggle sidebar menu</td>
+                <td>
+                    <span class="o_key">Shit</span>
+                    +
+                    <span class="o_key">Alt</span>
+                    +
+                    <span class="o_key">s</span>
+                </td>
+                <td>
+                    <span class="o_key">Control</span>
+                    +
+                    <span class="o_key">Alt</span>
+                    +
+                    <span class="o_key">s</span>
+                </td>
+            </tr>
+        </t>
+    </t>
+</templates>

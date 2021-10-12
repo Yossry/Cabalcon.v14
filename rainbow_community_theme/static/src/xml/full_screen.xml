@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="FullScreen">
+        <li class="o_user_fullscreen">
+            <a t-attf-class="fullscreen {{widget.is_full?'o_hidden':''}}" title="Full screen">
+                <i class="bi-fullscreen"></i>
+            </a>
+            <a t-attf-class="exitfullscreen {{widget.is_full?'':'o_hidden'}}" title="Exit full screen">
+                <i class="bi-fullscreen-exit"></i>
+            </a>
+        </li>
+    </t>
+  
+</templates>

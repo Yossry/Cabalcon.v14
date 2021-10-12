@@ -1,0 +1,9 @@
+.o_MessagingMenu.dropdown-dark {
+    .o_NotificationRequest {
+        background: transparent !important;
+
+        &:hover {
+            background: darken($o-header-dropdown-dark-notification-time-bg-color, 5%) !important;
+        }
+    }
+}

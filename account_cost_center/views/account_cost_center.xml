@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Cost Center views -->
+    <record id="account_cost_center_view_form" model="ir.ui.view">
+        <field name="model">account.cost.center</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Cost Center">
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" class="oe_inline" placeholder="e.g. Cost Center XYZ"/>
+                        </h1>
+                    </div>
+                    <group name="main_group">
+                        <group>
+                            <field name="active" invisible="1"/>
+                            <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_cost_center_view_tree" model="ir.ui.view">
+        <field name="model">account.cost.center</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_cost_center_view_search" model="ir.ui.view">
+        <field name="model">account.cost.center</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name/Code" filter_domain="['|', ('code','ilike', self), ('name','ilike',self)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="account_cost_center_action" model="ir.actions.act_window">
+        <field name="name">Cost Centers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.cost.center</field>
+<!--        <field name="view_type">form</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+        <field name="search_view_id" ref="account_cost_center_view_search"/>
+    </record>
+<!--    <record id="action_move_line_form" model="ir.actions.act_window">-->
+<!--            <field name="name">Entries</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">account.move</field>-->
+<!--            <field name="view_id" ref="view_move_tree"/>-->
+<!--            <field name="search_view_id" ref="view_account_move_filter"/>-->
+<!--        </record>-->
+
+    <!-- Cost Center menu-->
+    <menuitem id="cost_center_menu"
+              parent="account.menu_analytic_accounting"
+              action="account_cost_center_action"
+              groups="account.group_account_user"
+              sequence="40"/>
+
+</odoo>
