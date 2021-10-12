@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_users_form_inherit_pin" model="ir.ui.view">
+            <field name="name">res.users.form.inherit.pin</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//div[hasclass('oe_title')]//field[@name='partner_id']" position="after">
+                        <field name="pin"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+        <!--Por ahora no se mostrara en el treeview del res_user-->
+        <!--
+        <record id="view_users_tree_inherit_pin" model="ir.ui.view">
+            <field name="name">res.users.tree.inherit.pin</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree" />
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='login']" position="after">
+                        <field name="pin"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    -->
+    </data>
+</odoo>

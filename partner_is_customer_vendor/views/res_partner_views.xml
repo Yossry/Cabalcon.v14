@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Is Customer and Is Vendor -->
+        <record id="view_partner_form_customer_vendor" model="ir.ui.view">
+            <field name="name">view_partner_form_customer_vendor</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_type']" position="after">
+                    <div>
+                        <field name="is_customer" class="oe_inline"/> <label for="is_customer" string="Cliente"/>
+                        <field name="is_supplier" class="oe_inline"/> <label for="is_supplier" string="Proveedor"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Action -->
+        <!--
+        <record id="account.res_partner_action_customer" model="ir.actions.act_window">
+            <field name="name">Clientes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_is_company': True, 'default_customer_rank': 1, 'default_is_customer': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear un nuevo Cliente
+                </p><p>
+                    Esto ayudará a trackear todas las actividades relacionadas al Cliente.
+                </p>
+            </field>
+        </record>
+    -->
+    <!--
+        <record id="account.res_partner_action_supplier" model="ir.actions.act_window">
+            <field name="name">Proveedores</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{'search_default_supplier': 1,'res_partner_search_mode': 'supplier', 'default_is_company': True, 'default_supplier_rank': 1, 'default_is_supplier': True}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crear un nuevo Proveedor
+                </p><p>
+                    Esto ayudará a trackear todas las actividades relacionadas al Proveedor.
+                </p>
+            </field>
+        </record>
+      -->
+
+        <!-- Inherit Search -->
+        <!--
+        <record id="account.res_partner_view_search" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="before">
+                    <filter string="Clientes" name="customer" domain="['|',('customer_rank','>', 0),('is_customer','=',True)]"/>
+                    <filter string="Proveedores" name="supplier" domain="['|',('supplier_rank','>', 0),('is_supplier','=',True)]"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+    -->
+    </data>
+</odoo>

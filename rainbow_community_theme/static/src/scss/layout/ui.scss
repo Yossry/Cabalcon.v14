@@ -1,0 +1,6 @@
+// Shared with web client and login screen
+.o_drawer_menu_background {
+    background: url(/rainbow_community_theme/static/src/img/drawer-menu-bg-overlay.svg),
+        linear-gradient(to right bottom, #77717e, #c9a8a9);
+    background-size: cover;
+}

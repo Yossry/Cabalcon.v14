@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ThemeMenu">
+        <li class="o_theme_quick_sidebar_toggler" title="Theme Settings">
+            <a href="#" class="o_theme_quick_sidebar_toggler_icon">
+                <i class="fa fa-sliders"/>
+            </a>
+        </li>
+    </t>
+
+    <t t-name="Theme.Settings.Sidebar">
+        <div class="o_theme_quick_sidebar_settings">
+            <div class="o_theme_quick_sidebar_settings_list">
+                <h3 class="list-heading">Global mode</h3>
+                <t t-set="current_global" t-value="global_mode"/>
+                <ul class="list-items-global borderless">
+                    <t t-set="global_modes" t-value="[
+                        {'icon':'window-sidebar', 'data':1, 'title':'Sidebar'},
+                        {'icon':'layout-text-window-reverse', 'data':2, 'title':'Favorites'},
+                        {'icon':'window-dock', 'data':3,'title':'Drawer'}]"/>
+                    <t t-foreach="global_modes" t-as="gmode">
+                        <li>
+                            <div class="menu-mode-icon">
+                                <i t-attf-class="bi-{{gmode.icon}} {{gmode.data==current_global ? 'current':''}} " t-att-data-global="gmode.data"/>
+                            </div>
+                            <div class="menu-mode-title">
+                                <span t-esc="gmode.title"/>
+                            </div>
+                        </li>
+                </t> 
+                </ul>
+                <ul t-attf-class="list-items borderless submenu_position_ul {{global_mode==1 ? '':'o_hidden'}} ">
+                    <li>
+                        <span>Submenu location</span>
+                        <select class="form-control input-sm submenu_position" style="width: 130px !important;">
+                            <option value="1" t-att-selected="((submenu_position==1)? true : undefined)">Header Menu</option>
+                            <option value="2" t-att-selected="((submenu_position==2)? true : undefined)">Sidebar Menu</option>
+                            <option value="3" t-att-selected="((submenu_position==3)? true : undefined)">Header and Sidebar</option>
+                        </select>
+                    </li>
+                    <div class="text-lowercase font-italic w-100 text-right mt4">Only works in sidebar mode</div>
+                </ul>
+                <h3 t-attf-class="list-heading drawer_h3 {{global_mode!=1 ? '':'o_hidden'}}">Application Drawer</h3>
+                <ul t-attf-class="list-items borderless drawer_ul {{global_mode!=1 ? '':'o_hidden'}}">
+                    <li>
+                        <span>Enable Drawer Background </span>
+                        <t t-if="enable_drawer">
+                            <input type="checkbox" class="make-switch drawer_enable" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" class="make-switch drawer_enable" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"/>
+                        </t>
+
+                    </li>
+                    <li>
+                        <span>Enable Drawer Apps category </span>
+                        <t t-if="enable_category">
+                            <input type="checkbox" class="make-switch apps_category" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" class="make-switch apps_category" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"/>
+                        </t>
+                    </li>
+                    <li style="padding: 0 15px;"  t-attf-class="drawer_bg_li {{enable_drawer ? '':'o_hidden'}}">
+                        <t t-set="drawer_bgs" t-value="[
+                            {'image':'1.jpg', 'title':'BACKGROUND 1'},
+                            {'image':'2.jpg', 'title':'BACKGROUND 2'},
+                            {'image':'3.jpg', 'title':'BACKGROUND 3'},
+                            {'image':'4.jpg', 'title':'BACKGROUND 4'},
+                            {'image':'5.jpg', 'title':'BACKGROUND 5'},
+                            {'image':'6.jpg', 'title':'BACKGROUND 6'},
+                            {'image':'7.jpg', 'title':'BACKGROUND 7'},
+                            {'image':'8.jpg', 'title':'BACKGROUND 8'},
+                            {'image':'9.jpg', 'title':'BACKGROUND 9'}]"/>
+                        <t t-set="current_bg" t-value="drawer_bg"/>
+                        <ul class="list-items-drawer-bg borderless">
+                            <t t-foreach="drawer_bgs" t-as="drawer_bg">
+                                <li t-att-class="drawer_bg.image==current_bg ? 'current':''" data-container="body" t-att-title="drawer_bg.title" t-att-data-img="drawer_bg.image">
+                                    <img class="img-fluid" t-attf-src="/rainbow_community_theme/static/src/img/drawer/bg-thum-{{drawer_bg.image}}"/>
+                                </li>
+                            </t>
+                        </ul>
+                        <div class="text-lowercase font-italic w-100 text-right mt8 mb4">Double click to preview the picture</div>
+                    </li>
+                </ul>
+                <h3 t-attf-class="list-heading favorites_h3 {{global_mode==2 ? '':'o_hidden'}}">Favorites Menu</h3>
+                <ul t-attf-class="list-items borderless favorites_ul {{global_mode==2 ? '':'o_hidden'}}">
+                    <li>
+                        <span>Maximum number of apps</span>
+                        <select class="form-control input-sm favorites_max_apps" style="">
+                            <option value="5" t-att-selected="((favorites_max_apps==5)? true : undefined)">5</option>
+                            <option value="6"  t-att-selected="((favorites_max_apps==6)? true : undefined)">6</option>
+                            <option value="7"  t-att-selected="((favorites_max_apps==7)? true : undefined)">7</option>
+                            <option value="8"  t-att-selected="((favorites_max_apps==8)? true : undefined)">8</option>
+                        </select>
+                    </li>
+                </ul>
+                <h3 class="list-heading">Theme Color</h3>
+                <t t-set="colors" t-value="[
+                    {'color':'default', 'title':'Default'},
+                    {'color':'darkblue', 'title':'Dark Blue'},
+                    {'color':'blue', 'title':'Blue'},
+                    {'color':'lightblue', 'title':'Light Blue'},
+                    {'color':'grey', 'title':'Grey'},
+                    {'color':'light', 'title':'Light'},
+                    {'color':'light2', 'title':'Light 2'},
+                    {'color':'purplishred', 'title':'Purplish Red'}]"/>
+                <ul class="list-items-color borderless">
+                    <t t-foreach="colors" t-as="theme_color">
+                        <li data-container="body" t-attf-class="color-{{theme_color.color}}  {{theme_color.color==global_color ? 'current':''}} "   t-att-data-style="theme_color.color" t-att-title="theme_color.title"/>
+                    </t>
+                </ul>
+                
+                <h3 class="list-heading">Header</h3>
+                <ul class="list-items borderless">
+                    <li>
+                        <span>TOP MENU DROPDOWN</span>
+                        <select class="form-control input-sm herder_dropdown_menu_color">
+                            <option value="light" t-att-selected="((herder_dropdown_menu_color=='light')? true : undefined)">Light</option>
+                            <option value="dark" t-att-selected="((herder_dropdown_menu_color=='dark')? true : undefined)">Dark</option>
+                        </select>
+                    </li>
+                </ul>
+                <h3 t-attf-class="list-heading sidebar_h3 {{global_mode==1 ? '':'o_hidden'}}">Sidebar</h3>
+                <ul t-attf-class="list-items borderless sidebar_ul {{global_mode==1 ? '':'o_hidden'}}">
+                    <li>
+                        <span>SIDEBAR MODE</span>
+                        <select class="form-control input-sm sidebar_mode">
+                            <option value="expand" t-att-selected="((sidebar_mode=='expand')? true : undefined)">Expand</option>
+                            <option value="collapse" t-att-selected="((sidebar_mode=='collapse')? true : undefined)">Collapse</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span>SIDEBAR STYLE</span>
+                        <select class="form-control input-sm sidebar_color">
+                            <option value="default" t-att-selected="((sidebar_color=='default')? true : undefined)">Default</option>
+                            <option value="light" t-att-selected="((sidebar_color=='light')? true : undefined)">Light</option>
+                        </select>
+                    </li>
+                </ul>
+                <h3 class="list-heading">Footer</h3>
+                <ul class="list-items borderless">
+                    <li>
+                        <span>Enable FOOTER</span>
+                        <t t-if="enable_footer">
+                            <input type="checkbox" class="make-switch enable_footer" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" class="make-switch enable_footer" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"/>
+                        </t>
+                    </li>
+                </ul>
+                <h3 class="list-heading">Lock Screen</h3>
+                <ul class="list-items borderless">
+                    <li>
+                        <span>Enable Lock Screen</span>
+                        <t t-if="enable_lock">
+                            <input type="checkbox" class="make-switch enable_lock" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF" checked="checked"/>
+                        </t>
+                        <t t-else="">
+                            <input type="checkbox" class="make-switch enable_lock" data-size="small" data-on-color="success" data-on-text="ON" data-off-color="default" data-off-text="OFF"/>
+                        </t>
+                    </li>
+                    <li t-attf-class="enable_lock_li {{enable_lock ? '':'o_hidden'}}">
+                        <span>Lock Screen style</span>
+                        <select class="form-control input-sm lock_style">
+                            <option value="1" t-att-selected="((lock_style===1)? true : undefined)">Style 1</option>
+                            <option value="2" t-att-selected="((lock_style===2)? true : undefined)">Style 2</option>
+                        </select>
+                    </li>
+                </ul>
+                <div class="inner-content o_hidden">
+                    <!-- <button class="btn btn-primary btn-lg preview_theme">
+                        <i class="fa fa-eye"></i> Preview</button> -->
+                    <button class="btn btn-success btn-lg save_theme">
+                        <i class="fa fa-save"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <div t-name="Theme.drawer.background.preview" class="img-preview-box">
+        <t t-set="img" t-value="img"/>
+        <div class="lb-details">
+            <img class="img-fluid lb-image" t-attf-src="/rainbow_community_theme/static/src/img/drawer/bg-{{img}}"/>
+        </div>
+        <div class="lb-closeContainer">
+            <a class="lb-close"></a>
+        </div>
+    </div>
+
+</templates>

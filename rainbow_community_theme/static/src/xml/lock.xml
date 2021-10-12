@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="Lock.Relogin">
+        <div class="text-danger">
+            Are you sure you want to log off the current user: <span class="font-weight-bold" t-esc="name"/>
+? Will cause the current user's work content to be lost!
+        </div>
+    </t>
+
+</templates>

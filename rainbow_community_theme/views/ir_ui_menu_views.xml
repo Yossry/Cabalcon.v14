@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="edit_menu_category" model="ir.ui.view">
+        <field name="name">menu.acess.tree.inherit</field>
+        <field name="model">ir.ui.menu</field>
+        <field name="inherit_id" ref="base.edit_menu"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='complete_name']" position="after">
+                <field name="category_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="edit_menu_category_access" model="ir.ui.view">
+        <field name="name">menu.acess.form.inherit</field>
+        <field name="model">ir.ui.menu</field>
+        <field name="inherit_id" ref="base.edit_menu_access"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="category_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,230 @@
+// ------------------------------------------------------------------
+// Base layout rules, use the 'webclient.scss' file for styling
+// ------------------------------------------------------------------
+html {
+    height: 100%;
+
+    .o_web_client {
+        height: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        background-color: $bg-color !important;
+
+        &.o_fullscreen {
+            .o_main_navbar {
+                display: none;
+            }
+        }
+
+        &.o_sidebar_expand {
+            .o_main {
+                .o_action_manager {
+                    margin-left: $o-sidebar-menu-width !important;
+                }
+            }
+        }
+
+        &.o_sidebar_collapse {
+            .o_main {
+                .o_action_manager {
+                    margin-left: $o-sidebar-menu-collapsed-width !important;
+                }
+            }
+        }
+
+        &.o_favorites_mode {
+            .o_main {
+                .o_action_manager {
+                    // margin-left: $o-favorites-menu-width !important;
+                }
+            }
+
+            &.apps_favorite_add_mode,
+            &.apps_favorite_remove_mode {
+                .o_main {
+                    >.o_action_manager {
+                        pointer-events: none !important;
+                    }
+                }
+            }
+
+            &.apps_favorite_remove_mode {
+                .apps_favorite_remove_overlay {
+                    opacity: 0.3;
+                    top: 0;
+                    left: 0;
+                    background-color: black;
+                    width: 100%;
+
+                    .o_footer_inner {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .o_main_navbar {
+            flex: 0 0 auto;
+        }
+
+        >.o_main {
+            flex: 1 1 auto;
+            display: flex;
+            min-height: 0; // Allow flex to shrink this element as much as it wants
+            height: 100%;
+            margin: 0;
+
+            >.o_action_manager {
+                direction: ltr; //在这里定义方向属性，以便在运行rtlcss预处理程序时将其转换为rtl 
+                flex: 1 1 100%;
+                background-color: #ffffff;
+
+                @include media-breakpoint-up(md) {
+                    overflow: hidden;
+                    // iOS fix for scroll-x element inside scroll-y element
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                >.o_action {
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
+
+                    >.o_cp_controller {
+                        flex: 0 0 auto;
+                    }
+
+                    >.o_control_panel {
+                        flex: 0 0 auto;
+                    }
+
+                    >.o_content {
+                        flex: 1 1 100%;
+                        position: relative; // Allow to redistribute the 100% height to its child
+
+                        @include media-breakpoint-up(md) {
+                            overflow: auto;
+                            // iOS fix for scroll-x element inside scroll-y element
+                            -webkit-overflow-scrolling: touch;
+                        }
+
+                        @include media-breakpoint-down(sm) {
+                            overflow: visible;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .o_web_client {
+            &.modal-open {
+                .o_content {
+                    overflow: hidden;
+                }
+            }
+
+            .o_action_manager {
+                margin-left: 0 !important;
+                direction: ltr; //在这里定义方向属性，以便在运行rtlcss预处理程序时将其转换为rtl 
+                flex: 1 1 100%;
+                background-color: #ffffff;
+                // overflow-x: hidden;
+                min-height: 0;
+
+                >.o_action {
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column nowrap;
+
+                    >.o_cp_controller {
+                        flex: 0 0 auto;
+                    }
+
+                    >.o_control_panel {
+                        flex: 0 0 auto;
+                    }
+
+                    >.o_content {
+                        flex: 1 1 100%;
+                        position: relative; // Allow to redistribute the 100% height to its child
+
+                        @include media-breakpoint-up(md) {
+                            overflow: auto;
+                            // iOS fix for scroll-x element inside scroll-y element
+                            -webkit-overflow-scrolling: touch;
+                        }
+
+                        @include media-breakpoint-down(sm) {
+                            overflow: visible;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+
+            &.o_favorites_mode {
+                .o_action_manager {
+                    >.o_action {
+                        >.o_content {
+                            padding-bottom: 30px;
+                        }
+                    }
+                }
+            }
+
+
+            .o_main {
+                display: none;
+            }
+
+            .o_footer {
+                display: none;
+            }
+
+            &.o_favorites_mode {
+                .o_action_manager {}
+            }
+        }
+
+
+        .o_viewer_content .o_viewer_img_wrapper .o_viewer_zoomer {
+            overflow: scroll;
+        }
+    }
+
+    @include media-breakpoint-down(xs) {
+        .o_footer {
+            display: none;
+        }
+    }
+
+
+    // FIXME: Fix scrolling in modal on focus input due to a bug between Chrome (Android) and Bootstrap
+    body.modal-open {
+        position: fixed;
+    }
+
+    .o_loading {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: $zindex-modal + 1;
+    }
+}
+
+@media print {
+    html .o_web_client {
+        .o_main_navbar {
+            display: none;
+        }
+
+        .o_content {
+            position: static;
+            overflow: visible;
+            height: auto;
+        }
+    }
+}

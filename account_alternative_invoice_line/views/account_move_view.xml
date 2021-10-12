@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_move_form" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@id='invoice_tab']" position="after">
+                    <page id="invoice_tab2"
+                          string="Impresión Alternativa">
+                        <field name="invoice_line_ids2"
+                                       widget="section_and_note_one2many"
+                                       mode="tree">
+                            <tree editable="bottom" string="Alternative line">
+                                <control>
+                                    <create name="add_line_control" string="Add a line"/>
+                                    <create name="add_section_control" string="Add a section" />
+                                    <create name="add_note_control" string="Add a note"/>
+                                </control>
+                                <!-- Displayed fields -->
+                                <field name="sequence" widget="handle"/>
+                                <field name="name" string="Descripción"/>
+                                <field name="quantity"/>
+                                <field name="tax_ids" widget="many2many_tags"
+                                               domain="[('type_tax_use', '=?', parent.invoice_filter_type_domain), ('company_id', '=', parent.company_id)]"
+                                               context="{'append_type_to_tax_name': not parent.invoice_filter_type_domain}"
+                                               options="{'no_create': True}"
+                                               optional="show"/>
+
+                                <field name="price_unit" string="Precio"/>
+
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right">
+                            <field name="subtotal2"/>
+                        </group>
+
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

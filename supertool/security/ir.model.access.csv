@@ -1,0 +1,8 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+supertool_group,access_supertool_group,model_supertool_group,base.group_user,1,1,1,1
+supertool_pillar,access_supertool_pillar,model_supertool_pillar,base.group_user,1,1,1,1
+supertool_concept,access_supertool_concept,model_supertool_concept,base.group_user,1,1,1,1
+supertool_process,access_supertool_process,model_supertool_process,base.group_user,1,1,1,1
+supertool_organization,access_supertool_organization,model_supertool_organization,base.group_user,1,1,1,1
+project_entregables,access_project_entregables,model_project_entregables,base.group_user,1,1,1,1

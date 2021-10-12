@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_themes
+msgid "Themes"
+msgstr "主题"
+
+#. module: base
+#: model:ir.module.category,name:base.module_category_themes_backend
+msgid "Backend"
+msgstr "后台"
+
+#. module: base
+#: model:ir.module.module,shortdesc:base.module_rainbow_community_theme
+msgid "Rainbow Community Theme"
+msgstr "彩虹社区版主题"
+
+#. module: base
+#: model:ir.module.module,description:base.module_rainbow_community_theme
+msgid ""
+"\n"
+"Rainbow Community Theme\n"
+"===========================\n"
+"\n"
+"Backend/Launcher/Multi-level menu/Theme Settings/Custom login page/\n"
+"        "
+msgstr ""
+"\n"
+"彩虹社区版主题\n"
+"===========================\n"
+"\n"
+"后端/启动程序/多级菜单/主题设置/自定义登录页/\n"
+"        "
+
+#. module: base
+#: model:ir.module.module,shortdesc:base.module_web_database_multilingual
+msgid "Web database multilingual"
+msgstr "数据库管理多语言"
+
+#. module: base
+#: model:ir.module.module,description:base.module_web_database_multilingual
+msgid ""
+"\n"
+"Database management multilingual page\n"
+"        "
+msgstr ""
+"\n"
+"数据库管理多语言页面\n"
+"        "

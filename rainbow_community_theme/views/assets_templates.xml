@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="_assets_primary_variables" inherit_id="web._assets_primary_variables" priority="15">
+        <!-- <xpath expr="//link[@href='/web/static/src/scss/primary_variables.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/global/primary_variables.scss"/>
+        </xpath> -->
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/primary_variables.scss"/>
+
+            <t t-set="theme" t-value="request.env['ir.http'].sudo().get_user_theme_color()"/>
+            <link rel="stylesheet" id="style_color" type="text/scss" t-att-href="'/rainbow_community_theme/static/src/scss/themes/%s.scss' % theme"/>
+        </xpath>
+    </template>
+
+    <template id="_assets_secondary_variables" inherit_id="web._assets_secondary_variables" priority="15">
+        <!-- <xpath expr="//link[@href='/web/static/src/scss/secondary_variables.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/global/secondary_variables.scss"/>
+        </xpath> -->
+        <xpath expr="//link" position="before">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/secondary_variables.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/secondary_variables.scss"/>
+        </xpath>
+    </template>
+
+    <template id="_assets_backend_helpers" inherit_id="web._assets_backend_helpers" priority="15">
+        <xpath expr="//link[@href='/web/static/src/scss/bootstrap_overridden.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/bootstrap_overridden.scss"/>
+        </xpath>
+    </template>
+
+    <template id="assets_common" name="rainbow_community_theme assets common" inherit_id="web.assets_common">
+        <xpath expr="//link[@href='/web/static/src/scss/navbar.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/navbar.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/ui_extra.scss']" position="replace">
+            <!-- <t t-set="enable_drawer_bg" t-value="request.env['ir.http'].get_user_theme_enable_drawer_bg()"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/ui.scss"/> -->
+        </xpath>
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/fonts.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/lib/icons/font/bootstrap-icons.css"/>
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/core/dom.js"></script>
+        </xpath>
+    </template>
+
+
+    <template id="assets_backend" name="rainbow_community_theme assets backend" inherit_id="web.assets_backend">       
+        <!-- CSS -->
+        <xpath expr="//link[@href='/web/static/src/scss/webclient_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/webclient.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/webclient_layout.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/webclient_layout.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/fields_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/fields.scss"/>
+        </xpath>
+        
+        <xpath expr="//link[@href='/web/static/src/scss/form_view_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/form_view.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/list_view_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/list_view.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/search_view_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/search_view.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/web/static/src/scss/dropdown_extra.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/dropdown.scss"/>
+        </xpath>
+        <xpath expr="//link[last()]" position="after">
+            <!-- <t t-set="theme" t-value="request.env['ir.http'].get_user_theme_color()"/> -->
+             
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/theme_sidebar.scss"/>            
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/systray.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/theme_sidebar.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/favorites.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/footer.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/nav_sidebar.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/base_settings.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/base_settings_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/drawer_menu.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/drawer_menu_layout.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/search_panel_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/menu_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/menu_search.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/control_panel_layout.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/control_panel_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/datepicker.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/kanban_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/touch_device.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/snackbar.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/swipe_item_mixin.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/form_view_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/kanban_view_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/modal_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/web_calendar_mobile.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/navbar_mobile.scss"/>
+            
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/layout/messaging_menu.scss"/>
+
+        </xpath>
+
+        <!-- JS -->
+        <xpath expr="//script[@src='/web/static/src/js/chrome/abstract_web_client.js']" position="replace">
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/abstract_web_client.js"/>
+        </xpath>
+        <xpath expr="//script[@src='/web/static/src/js/chrome/web_client.js']" position="replace">
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/web_client.js"/>
+        </xpath>
+        <xpath expr="//script[@src='/web/static/src/js/chrome/menu.js']" position="replace">
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/menu.js"/>
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/apps.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/drawer_menu_wrapper.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/drawer_menu.js"></script>  
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/go_top.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/full_screen.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/language.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/sidebar_menu.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/favorites.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/footer.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/menu_mobile.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/theme.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/swipe_item_mixin.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/chrome/tour_disable_mobile.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/control_panel/control_panel.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/control_panel/search_panel_mobile.js"></script>
+
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/core/dialog.js"></script>
+
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/basic/basic_renderer.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/calendar/calendar_controller.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/calendar/calendar_renderer.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/kanban/kanban_column.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/kanban/kanban_column_quick_create.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/kanban/kanban_renderer_mobile.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/kanban/kanban_tabs_mobile_mixin.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/kanban/kanban_view.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/list_controller.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/form_renderer.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/relational_fields.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/upgrade_fields.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/views/view_dialogs.js"></script>
+
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/widgets/debug_manager.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/widgets/user_menu.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/widgets/snackbar.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/widgets/switch_company_menu.js"></script>
+            <script type="text/javascript" src="/rainbow_community_theme/static/src/js/widgets/switch_company_menu_mobile.js"></script>
+
+        </xpath>
+    </template>
+    
+    <template id="rainbow_mail_assets_backend" name="mail assets" inherit_id="mail.assets_backend">
+        <!-- CSS -->
+        <xpath expr="//link[@href='/mail/static/src/components/notification_list/notification_list.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/notification_list.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/notification_request/notification_request.scss']" position="after">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/notification_request.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/widgets/discuss/discuss.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/discuss.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/discuss_sidebar/discuss_sidebar.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/discuss_sidebar.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/discuss_sidebar_item/discuss_sidebar_item.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/discuss_sidebar_item.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/message/message.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/message.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/chat_window_header/chat_window_header.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/chat_window_header.scss"/>
+        </xpath>
+        <xpath expr="//link[@href='/mail/static/src/components/message_list/message_list.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/rainbow_community_theme/static/src/scss/pages/mail/message_list.scss"/>
+        </xpath>
+        
+    </template>
+
+</odoo>

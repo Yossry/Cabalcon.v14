@@ -1,0 +1,581 @@
+.apps_favorite_add_mode,
+.apps_favorite_remove_mode {
+    .o_favorites_menu_wrapper {
+        z-index: $o-favorites-toolbar-zindex + 1;
+
+        .mode_border {
+            border: 1px dashed orange !important;
+        }
+
+        .ghost_border {
+            border: 1px dashed green !important;
+        }
+
+        .drag_border {
+            border: 1px dashed #fff !important;
+
+        }
+
+        .chosen_border {
+            border: 1px dashed red;
+        }
+
+        .o_favorites_menu {
+            li {
+                cursor: grab !important;
+
+                >a {
+                    // pointer-events: auto;
+                    pointer-events: none !important;
+
+                    >img {
+                        position: relative !important;
+                    }
+                }
+            }
+        }
+
+        .o_favorites_operate_menu {
+
+            li.o_favorite_remove,
+            li.operate_submit_apps,
+            li.operate_cancel_apps {
+                >a {
+                    pointer-events: auto !important;
+                }
+            }
+
+            .o_favorite_remove {
+                color: red !important;
+            }
+        }
+
+    }
+
+    @include media-breakpoint-down(sm) {
+        .o_favorites_menu_wrapper {
+            flex-direction: column-reverse;
+            background: transparent !important;
+
+            .o_favorites_menu {
+                width: 100vw !important;
+                background-color: $o-sidebar-menu-bg-color;
+                height: 46px !important;
+                min-height: 46px !important;
+
+                >li {
+                    background-color: $o-sidebar-menu-bg-color;
+                }
+            }
+
+            .o_favorites_operate_menu {
+                width: 100vw !important;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                background-color: transparent !important;
+                z-index: $o-favorites-toolbar-zindex !important;
+
+                &:focus-visible {
+                    outline: 0 !important;
+                }
+
+                >li {
+                    &:focus-visible {
+                        outline: 0 !important;
+                    }
+
+                    background-color: $o-sidebar-menu-bg-color;
+                    // border-radius: 50% !important;
+                    // position: fixed !important;
+                    height: 46px !important;
+                    width: 46px !important;
+                    max-height: 46px !important;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    >a {
+
+                        &:focus,
+                        &:focus-visible {
+                            outline: 0 !important;
+                        }
+
+                        background-color: transparent;
+                        border: 0 !important;
+                        font-size: 32px;
+                    }
+                }
+
+                li.operate_remove_apps {
+                    background-color: $o-sidebar-menu-bg-color;
+                    height: 46px !important;
+                    width: 46px !important;
+                    max-height: 46px !important;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    :first-child {
+                        margin: 0 !important;
+                    }
+
+                    >a {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.o_favorites_menu_wrapper {
+    display: flex;
+    flex-direction: column;
+    // width: $o-favorites-menu-wrapper-width !important;
+    width: $o-favorites-menu-wrapper-width;
+    margin: 0;
+    padding: 0;
+    background-color: $o-sidebar-menu-bg-color;
+
+    .o_favorites_menu {
+        flex: 1;
+        width: $o-favorites-menu-width !important;
+        // position: fixed !important;
+        list-style: none;
+        margin: 1px;
+        padding: 1px;
+
+        li {
+            cursor: pointer;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0px;
+            max-height: $o-favorites-menu-width !important;
+
+            &:first-child {
+                margin-top: 6px !important;
+            }
+
+            >a {
+                border-top: 1px solid $o-sidebar-menu-devider-border-color !important;
+                color: $o-sidebar-menu-link-font-color;
+                display: block;
+                position: relative;
+                margin: 0;
+                border: 0px;
+
+                padding: 5px;
+                text-decoration: none;
+                font-size: $o-sidebar-menu-menu-link-font-size;
+                font-weight: 300;
+
+                >img {
+                    // width: $o-sidebar-menu-link-icon-size;
+                    width: 30px;
+                    text-shadow: none;
+                }
+
+                .remove_app {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                >a {
+                    background: $o-sidebar-menu-link-bg-color-on-hover;
+                    color: $o-sidebar-menu-link-font-color-on-hover;
+
+                    >i {
+                        color: $o-sidebar-menu-link-icon-font-color-on-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    .o_favorites_operate_menu {
+        width: $o-favorites-menu-width !important;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: $o-sidebar-menu-bg-color;
+        // height: $o-favorites-menu-width * 2;
+
+        li {
+            cursor: pointer;
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0px;
+            max-height: $o-favorites-menu-width !important;
+
+            >a {
+                border-top: 1px solid $o-sidebar-menu-devider-border-color !important;
+                color: $o-sidebar-menu-link-font-color;
+                display: block;
+                position: relative;
+                margin: 0;
+                border: 0px;
+                // padding: 10px 15px;
+                padding: 10px;
+                text-decoration: none;
+                font-size: $o-sidebar-menu-menu-link-font-size;
+                font-weight: 300;
+
+                >img {
+                    // width: $o-sidebar-menu-link-icon-size;
+                    width: 25px;
+                    // margin-right: 5px;
+                    text-shadow: none;
+                }
+            }
+
+            &:hover {
+                >a {
+                    background: $o-sidebar-menu-link-bg-color-on-hover;
+                    color: $o-sidebar-menu-link-font-color-on-hover;
+
+                    >i {
+                        color: $o-sidebar-menu-link-icon-font-color-on-hover;
+                    }
+                }
+            }
+        }
+
+        li.operate_add_apps,
+        li.operate_remove_apps,
+        li.operate_submit_apps,
+        li.operate_cancel_apps {
+
+            height: 46px !important;
+            width: 46px !important;
+            max-height: 46px !important;
+
+            >a {
+                font-size: 28px;
+                color: $o-sidebar-menu-link-icon-font-color;
+            }
+        }
+
+
+    }
+
+    @include media-breakpoint-down(sm) {
+        .o_favorites_operate_menu {
+            display: none;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .o_drawer_menu_background {
+
+        .o_favorites_menu_wrapper,
+        .o_favorites_toolbar {
+            // display: none;
+            visibility: hidden;
+        }
+
+        &.apps_favorite_add_mode,
+        &.apps_favorite_remove_mode {
+
+            .o_favorites_menu_wrapper,
+            .o_favorites_toolbar {
+                // display: block;
+                visibility: visible;
+            }
+
+        }
+
+        &.apps_favorite_add_mode {
+            .o_favorites_menu_wrapper {
+                .operate_submit_apps {
+                    // display: none;
+                }
+            }
+        }
+    }
+
+    .o_favorites_toolbar {
+        position: fixed;
+        z-index: $o-favorites-toolbar-zindex + 3;
+        top: 50%;
+        right: 1px;
+        // margin-top: -230px;
+        pointer-events: none;
+
+        .o_favorites_toolbar_trigger {
+            position: absolute;
+            z-index: $o-favorites-toolbar-zindex + 3;
+            top: 0;
+            right: 0;
+            height: 40px;
+            width: 40px;
+            border-radius: 50% !important;
+            overflow: hidden;
+            white-space: nowrap;
+            color: transparent;
+            pointer-events: auto;
+
+            span,
+            span::after,
+            span::before {
+                /* this is the hamburger icon */
+                position: absolute;
+                width: 16px;
+                height: 2px;
+                background-color: #ffffff;
+            }
+
+            span {
+                /* middle line of the hamburger icon */
+                transition: background-color .2s;
+
+                left: 50%;
+                top: 50%;
+                bottom: auto;
+                right: auto;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            span::after,
+            span::before {
+                /* top and bottom lines of the hamburger icon */
+                content: '';
+                top: 0;
+                left: 0;
+                backface-visibility: hidden;
+                transition: transform .2s;
+            }
+
+            span::before {
+                transform: translateY(-6px);
+            }
+
+            span::after {
+                transform: translateY(6px);
+            }
+
+            .no-touch &:hover~.o_favorites_toolbar_bg {
+                box-shadow: 0 6px 40px rgba(#000, .2);
+            }
+
+        }
+
+        ul {
+            position: relative;
+            z-index: $o-favorites-toolbar-zindex + 3;
+            padding: 40px 0 0;
+            visibility: hidden;
+            transition: visibility .3s;
+            text-align: right;
+            list-style: none;
+
+            >li {
+                a {
+                    position: relative;
+                    display: block;
+                    height: 40px;
+                    line-height: 40px;
+                    padding: 0 calc(1em + 30px) 0 1em;
+                    font-size: 1.4rem;
+                    transition: color .2s;
+
+                    &:hover {
+                        text-decoration: none;
+
+                        >span {
+                            text-decoration: none;
+                        }
+                    }
+
+                    >i {
+                        /* navigation item icons */
+                        // content: '';
+                        position: absolute;
+                        height: 22px;
+                        width: 22px;
+                        font-size: 22px;
+                        right: 10px;
+                        top: 10px;
+                        color: darken(#fff, 8%);
+                    }
+
+                    &::before {
+                        /* line visible next to the active navigation item */
+                        content: '';
+                        position: absolute;
+                        width: 3px;
+                        height: 16px;
+                        top: 50%;
+                        right: 40px;
+                        transform: translateX(3px) translateY(-50%) scaleY(0);
+                        background-color: #FF3F3F;
+                    }
+                }
+
+                span {
+                    /* navigation item labels */
+                    color: darken(#fff, 8%);
+                    font-weight: 400;
+                    display: block;
+                    opacity: 0;
+                    transform: translateX(-25px);
+                }
+
+                &:last-child {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+
+        .o_favorites_toolbar_bg {
+            /* this is the stretching navigation background */
+            position: absolute;
+            z-index: $o-favorites-toolbar-zindex + 2;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px !important;
+            background: #36C6D3;
+            box-shadow: 0 1px 4px rgba(#000, .2);
+            transition: height .2s, box-shadow .2s;
+        }
+
+        &.nav-is-visible {
+            pointer-events: auto;
+
+            .o_favorites_toolbar_trigger {
+                span {
+                    background-color: transparent;
+                }
+
+                span::before {
+                    transform: rotate(-45deg);
+                }
+
+                span::after {
+                    transform: rotate(45deg);
+                }
+            }
+
+            ul {
+                visibility: visible;
+
+                a::after {
+                    /* navigation item icons */
+                    transform: translateY(-50%) scale(1);
+                    animation: scaleIn .15s backwards;
+                    transition: opacity .2s;
+                }
+
+                a:hover {
+                    &::after {
+                        opacity: 1;
+                    }
+
+                    &::before {
+                        transform: translateX(3px) translateY(-50%) scaleY(2);
+                        transition: transform .15s .3s;
+                    }
+
+                    >span {
+                        color: darken(#fff, 0);
+                    }
+
+                    >i {
+                        color: darken(#fff, 2%);
+                    }
+                }
+
+                span {
+                    opacity: 1;
+                    transform: translateX(0);
+                    animation: slideIn .15s backwards;
+                    transition: transform .2s;
+                }
+
+                .no-touch & a:hover {
+
+                    &::after {
+                        opacity: 1;
+                    }
+
+                    span {
+                        transform: translateX(-5px);
+                    }
+                }
+            }
+        }
+
+        &.nav-is-visible .o_favorites_toolbar_bg {
+            height: 100%;
+            box-shadow: 0 6px 40px rgba(#000, .2);
+        }
+    }
+
+    .o_favorites_toolbar_overlay {
+        display: none;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: fixed;
+        z-index: $o-favorites-toolbar-zindex + 1;
+        background: rgba(#000, 0);
+    }
+
+    .o_favorites_toolbar.nav-is-visible+.o_favorites_toolbar_overlay {
+        background: rgba(#000, 0.8);
+        display: block;
+        -webkit-transition: background .7s ease-out;
+        -moz-transition: background .7s ease-out;
+        -o-transition: background .7s ease-out;
+        transition: background .7s ease-out;
+    }
+
+
+    .o_favorites_menu_wrapper {
+        display: flex;
+        width: 100% !important;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+
+        .o_favorites_menu {
+            // width: 100% !important;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 10px;
+            height: 46px !important;
+            min-height: 46px !important;
+
+            >li {
+                &:first-child {
+                    margin: 0 !important;
+                }
+
+                width: 44px !important;
+                height: 44px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+
+                >a {
+                    border: 0 !important;
+                }
+            }
+
+        }
+
+
+    }
+}

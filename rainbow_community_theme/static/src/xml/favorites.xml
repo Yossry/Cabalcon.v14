@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <t t-name="FavoritesMenu">
+        <div t-attf-class="o_favorites_menu_wrapper {{widget.is_mobile?'fixed-bottom':''}}">
+            <ul t-attf-class="o_favorites_menu {{widget.is_mobile?'w-100':''}}"/>
+            <ul t-attf-class="o_favorites_operate_menu {{widget.is_mobile?'o_hidden':''}}">
+                <li t-if="!widget.is_mobile" class="operate_add_apps operate">
+                    <a href="#" class="fa fa-plus-square o_favorite_add" title="Favorite Applications" aria-label="Favorite Applications"/>
+                </li>
+                <li t-attf-class="operate_remove_apps operate">
+                    <a href="#" class="fa fa-trash-o o_favorite_remove" title="Remove Applications" aria-label="Remove Applications"/>
+                </li>
+                <li class="operate_submit_apps operate o_hidden">
+                    <a href="#" class="fa fa-check o_favorite_submit text-success" title="Submit" aria-label="Submit"/>
+                </li>
+                <li class="operate_cancel_apps operate o_hidden">
+                    <a href="#" class="fa fa-times o_favorite_cancel text-warning" title="Cancel" aria-label="Cancel"/>
+                </li>
+
+                <li class="o_tooltip o_tooltip_visible top position-static o_hidden" style="width: 0 !important;"/>
+
+            </ul>            
+        </div>
+    </t>
+
+    <t t-name="FavoritesMenu.sections">
+        <li class="nav-item " t-foreach="apps_data" t-as="app" t-att-title="app.name">
+            <a class="o_app" t-att-data-menu="app.id" t-att-data-menu-xmlid="app.xmlid"
+                t-att-data-action-model="app.action ? app.action.split(',')[0] : ''"
+                t-att-data-action-id="app.action ? app.action.split(',')[1] : ''"
+                t-att-href="app.href || ('#menu_id='+app.id+'&amp;action_id='+app.action)"
+                t-on-click.prevent="_onAppClick(app)"
+            >
+                <img class="o_app_icon" t-attf-src="data:image/png;base64,{{app.web_icon_data}}"/>
+            </a>
+        </li>
+    </t>
+    
+    <t t-name="FavoritesMenu.Toolbar">
+        <nav class="o_favorites_toolbar">
+            <a class="o_favorites_toolbar_trigger">
+                <span></span>
+            </a>
+            <ul>
+                <li>
+                    <a href="#" class="o_favorite_add">
+                        <span>Favorite Applications</span>
+                        <i class="fa fa-plus-square" title="Favorite Applications" aria-label="Favorite Applications"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="o_favorite_remove">
+                        <span>Remove Applications</span>
+                        <i class="fa fa-trash-o" title="Remove Applications" aria-label="Remove Applications"></i>
+                    </a>
+                </li>
+                <li class="toolbar_submit operate o_hidden">
+                    <a href="#" class="operate_submit_apps">
+                        <span>Submit</span>
+                        <i class="fa fa-check" title="Submit" aria-label="Submit"></i>
+                    </a>
+                </li>
+                <li class="toolbar_cancel operate o_hidden">
+                    <a href="#" class="operate_cancel_apps o_hidden">
+                        <span>Cancel</span>
+                        <i class="fa fa-times" title="Cancel" aria-label="Cancel"></i>
+                    </a>
+                </li>
+            </ul>
+            <span class="o_favorites_toolbar_bg"></span>
+        </nav>
+        <div class="o_favorites_toolbar_overlay"></div>
+    </t>
+</templates>

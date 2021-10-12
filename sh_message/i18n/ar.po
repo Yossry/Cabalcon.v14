@@ -1,0 +1,67 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_message
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-03 05:12+0000\n"
+"PO-Revision-Date: 2020-11-03 05:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__id
+msgid "ID"
+msgstr "هوية شخصية"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: sh_message
+#: model:ir.model.fields,field_description:sh_message.field_sh_message_wizard__name
+#: model_terms:ir.ui.view,arch_db:sh_message.sh_message_wizard
+msgid "Message"
+msgstr "رسالة"
+
+#. module: sh_message
+#: model:ir.model,name:sh_message.model_sh_message_wizard
+msgid "Message wizard to display warnings, alert ,success messages"
+msgstr "معالج الرسائل لعرض التحذيرات والتنبيهات ورسائل النجاح"
+
+#. module: sh_message
+#: model_terms:ir.ui.view,arch_db:sh_message.sh_message_wizard
+msgid "OK"
+msgstr "حسنا"

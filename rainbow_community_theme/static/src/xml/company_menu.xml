@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="SwitchCompanyMenu">
+
+        <t t-jquery=".log_into" t-operation="replace">
+            <div role="button" t-att-aria-pressed="is_current" aria-label="Switch to this company" tabindex="0" t-att-class="'d-flex flex-grow-1 align-items-center py-0 log_into pl-3 o_py ' + (is_current ? 'is_current' : '') " >
+                <t t-if="is_allowed">
+                    <span class='mr-3 company_label'>
+                        <t t-esc="company[1]"/>
+                    </span>
+                </t>
+                <t t-if="!is_allowed">
+                    <span class='mr-3 company_label text-muted'>
+                        <t t-esc="company[1]"/>
+                    </span>
+                </t>
+            </div>
+        </t>
+    </t>
+</templates>

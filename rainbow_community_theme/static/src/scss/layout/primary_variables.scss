@@ -1,0 +1,84 @@
+///
+/// This file regroups the variables that style odoo components.
+/// They are available in every asset bundle.
+///
+
+// Font sizes
+// =====================================================================
+$o-font-size-base-touch: 15px;
+
+// Colors
+// =====================================================================
+$o-brand-odoo: $o-enterprise-color;
+$o-brand-primary: $o-enterprise-primary-color;
+$o-brand-secondary: #8f8f8f;
+$o-brand-lightsecondary: $o-gray-100;
+
+$o-main-text-color: #666666;
+$o-general-panel-bg-color: #f1f4f7 !default;
+$o-page-content-solid-bg-color: darken($o-general-panel-bg-color, 1%) !default; // content solid bg color. default:#F0F2F7.
+$o-list-footer-bg-color: white;
+
+$o-btn-secondary-bg: white;
+$o-btn-secondary-hover-bg: darken($o-btn-secondary-bg, 10%);
+$o-btn-secondary-active-bg: darken($o-btn-secondary-bg, 8%);
+
+// Drawer menu
+// =====================================================================
+$o-drawer-menu-container-size: 850px;
+$o-drawer-menu-app-icon-max-width: 70px;
+
+
+// Theme Sidebar
+// =====================================================================
+$o-theme-quick-sidebar-width: 380px !default;
+$o-theme-quick-sidebar-zindex:1050;
+
+// Favorites
+// =====================================================================
+$o-favorites-menu-wrapper-width: 46px !default;
+$o-favorites-menu-width: 44px !default;
+
+// Sidebar Navigation menu 
+// =====================================================================
+// $o-sidebar-menu-width: 265px !default;
+$o-sidebar-menu-width: 235px !default;
+// $o-sidebar-menu-collapsed-width: 70px !default;
+$o-sidebar-menu-collapsed-width: 45px !default;
+$o-sidebar-menu-collapsed-submenu-width-on-hover: 14px !default;
+$o-sidebar-menu-logo-container-width: $o-sidebar-menu-width !default;
+$o-sidebar-menu-logo-container-width-xs: 110px !default;
+$o-sidebar-menu-logo-container-width-xxs: 100px !default;
+$o-sidebar-menu-menu-head-font-size: 14px !default;
+$o-sidebar-menu-menu-link-font-size: 14px !default;
+$o-sidebar-menu-menu-link-font-weight: 300 !default;
+// $o-sidebar-menu-link-icon-size: 16px !default;
+$o-sidebar-menu-link-icon-size: 20px !default;
+$o-sidebar-menu-menu-sub-menu-link-icon-size: 16px !default;
+$o-sidebar-menu-menu-sub-menu-link-icon-font-size: 14px !default;
+$o-sidebar-menu-fixed-zindex:999;
+$o-sidebar-menu-submenu-zindex:900;
+
+// snackbar
+// =====================================================================
+$o-snackbar-background-color: $o-tooltip-background-color;
+$o-snackbar-color: $o-tooltip-color;
+$o-snackbar-height: $o-kanban-header-title-height;
+$o-snackbar-left: 15px;
+$o-snackbar-right: $o-snackbar-left;
+$o-snackbar-bottom: 20px;
+$o-snackbar-inner-padding: 16px;
+
+// touch
+// =====================================================================
+$o-touch-btn-padding: 7px 14px;
+
+// Footer
+// =====================================================================
+$o-footer-height: 33px !default;
+$o-footer-zindex: 1000;
+$o-footer-gototop-zindex: 1000;
+
+// Footer
+// =====================================================================
+$o-favorites-toolbar-zindex: 1060;

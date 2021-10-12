@@ -1,0 +1,7 @@
+.fa-reload:before {
+	content: "\f021";
+}
+
+.o_pager_reload:hover {
+    background-color: #e2e2e0;
+}

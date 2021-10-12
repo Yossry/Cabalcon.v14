@@ -1,0 +1,12 @@
+#object1 p {margin-bottom: 0px;margin-right: 17px;margin-left: 15px;}
+#object1 {width: 100%;word-break: break-word;}
+// #object marquee{margin: 0px 20px 0px 0px;}
+.o_notification_manager .toast.o_notification .toast-body .o_notification_content{width: 100%;word-break: break-word;}
+.o_notification_manager .toast.o_notification:not(:last-child){margin-bottom: 10px;}
+.o_notification_manager .toast.o_notification.bg-warning .toast-body{padding: 10px 12px;font-size: 13.5px;line-height: 18px;color:#a07415 !important;}
+.o_notification_manager .toast.o_notification.bg-warning{border: 1px solid #e8b64c  !important;}
+.o_notification_manager .toast.o_notification.bg-warning .toast-body .close.o_notification_close{color: #a07415 !important;}
+
+.o_notification_manager .toast.o_notification.bg-danger .toast-body{padding: 10px 12px;font-size: 13.5px;line-height: 18px;color:#9f2723 !important;}
+.o_notification_manager .toast.o_notification.bg-danger{border: 1px solid #ad6462 !important;}
+.o_notification_manager .toast.o_notification.bg-danger .toast-body .close.o_notification_close{color: #9f2723 !important;}
