@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sh_assets_backend" name="pwa assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script>
+                // fetch company id
+                var cid = $.bbq.getState().cids;
+                if (cid) {
+                    $("#shmanifiest").attr("href", "/manifest.json/" + cid);
+					$("#iphone_shmanifiest").attr('href','/iphone.json/'+cid);
+                }
+            </script>
+            <link rel="manifest" id="shmanifiest" t-att-href="'/manifest.json/'+str(request.env.user.company_id.id)" />
+            <link rel="apple-touch-icon" id="iphone_shmanifiest" sizes="200x200" t-att-href="'/iphone.json/'+str(request.env.user.company_id.id)"/>
+           	
+			<script type="text/javascript" src="/sh_backmate_theme/static/index.js"></script>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="seq_account_fiscal_year_period" model="ir.sequence">
+            <field name="name">account.fiscal.period.sequence</field>
+            <field name="code">account.fiscal.period.year</field>
+            <field name="prefix">Fiscal/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

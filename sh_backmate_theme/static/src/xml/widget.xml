@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <!-- <t t-extend="UserMenu">
+       <t t-jquery="li" t-operation="before">
+	        <li class="o_night_mode">
+	       		<div class="theme-switch-wrapper">
+		       		<label class="theme-switch" for="night_checkbox">
+		    		<input type="checkbox" id="night_checkbox" />
+		    	<div class="slider round"></div>
+		  		</label>
+	    		
+	  		</div>
+	    </li>
+       </t>
+    </t> -->
+    <t t-name="NightModeTemplate">
+		<li class="o_night_mode" style="margin-top: 13px;">
+			<t t-if="widget.day_mode">
+				<img src="/sh_backmate_theme/static/src/icons/moon.png" id="moon_button" style="height: 15px; width: 15px;"/> 
+			</t>
+			<t t-else="">
+			 	<img src="/sh_backmate_theme/static/src/icons/sun.png" id="sun_button" style="height: 15px; width: 15px;"/> 
+			</t>
+			 <input type="checkbox" id="night_checkbox" style="display:none;"/>
+
+        </li>
+	</t>
+</templates>

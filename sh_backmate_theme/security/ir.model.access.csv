@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_pwa_config,access_sh_pwa_config,model_sh_pwa_config,base.group_user,1,1,1,1
+access_sh_wqm_quick_model_all,access.sh.wqm.quick.model.all,model_sh_wqm_quick_menu,,1,1,1,1
+access_sh_announcement,access_sh_announcement,model_sh_announcement,sh_backmate_theme.group_web_notification,1,1,1,1
+access_sh_announcement_user,access_sh_announcement_user,model_sh_announcement,,1,0,0,0

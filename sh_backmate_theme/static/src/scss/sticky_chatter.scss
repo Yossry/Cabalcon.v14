@@ -1,0 +1,39 @@
+/*
+=======================================================================
+				Chatter Sticky Start
+=======================================================================
+*/
+
+@if $is_sticky_chatter == True{
+
+/* .o_Chatter_fixedPanel{position: sticky;top: 40px;z-index: 1;} */
+
+@if $is_sticky_form == True {
+.o_Chatter_fixedPanel {
+        position: sticky;
+        top: 40px;
+        z-index: 1;
+       /*  background-color: $o-list-footer-bg-color; */
+ }
+ 
+
+ 
+ }
+ @else {
+.o_Chatter_fixedPanel {
+        position: sticky;
+        top: 0px !important;
+        z-index: 1;
+       /* background-color: $o-list-footer-bg-color; */
+ }
+ 
+}
+
+
+}
+
+/*
+=======================================================================
+				Chatter Sticky End
+=======================================================================
+*/

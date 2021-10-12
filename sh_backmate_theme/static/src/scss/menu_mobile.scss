@@ -1,0 +1,141 @@
+
+.o_web_client .o_main_navbar .o_disabled {
+        pointer-events: none;
+        opacity: 0.4;
+}
+
+
+
+
+.sh_profile_menu{
+    display: flex;
+    flex-flow: column nowrap;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 300;
+    z-index: $zindex-tooltip + 10;
+}
+
+.sh_profile_menu_topbar {
+    flex: 0 0 $o-navbar-height;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background: darken($o-brand-odoo, 10%);
+    color: white;
+}
+.sh_profile_menu_topbar .dropdown-toggle {
+    padding: 10px 16px;
+}
+
+.sh_profile_menu_avatar {
+    height: 26px;
+    width: 26px;
+    object-fit: cover;
+}
+.sh_profile_menu_username, 
+.sh_profile_menu_caret {
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.sh_profile_menu_close {
+    height: 100%;
+    padding: 16px;
+}
+.sh_profile_menu_content {
+    flex: 1 1 auto;
+    overflow: auto;
+    background: white;
+}        
+.sh_profile_menu_dark {
+   background-color: $o-brand-odoo;
+}
+.sh_profile_menu_app {
+   padding-left: 20px;
+}
+
+.sh_profile_menu_app ul {
+    padding: 0px;
+}
+.sh_profile_menu_app ul li {
+    list-style: none;
+}
+.sh_profile_menu_app ul li a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    font-weight: inherit;
+}  
+#sub_menu {
+     margin-top: 4px;
+     float: right;
+}
+
+.sh_profile_menu_app ul li > ul {
+    display: none;
+}
+.sh_profile_menu_app ul li .show > ul {
+    display: block;
+}
+
+
+//@for $index from 1 through 5 .o_menu_entry_lvl_#{$index} {padding-left: ($index - 1) * 16px;}
+
+
+.sh_profile_menu_user {
+	color: $o-main-text-color;
+}
+
+.sh_profile_menu_companies {
+    padding: 16px;
+    border-bottom: 1px solid $o-main-color-muted;
+}
+
+.sh_profile_menu_user_title {
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sh_profile_menu_company {
+    padding: 10px 0;
+}
+
+.sh_profile_menu_company .active {
+   font-weight: bold;
+}
+
+.sh_profile_menu_company_icon {
+    margin-right: 10px;
+}
+
+.o_user_menu_mobile {
+    padding: 16px;
+    list-style: none;
+}
+       
+.o_user_menu_mobile .divider { 
+    background-color: $o-main-color-muted;
+    height: 1px;
+    margin: 10px -16px;
+}
+
+.o_user_menu_mobile a {
+    display: block;
+    padding: 10px 0;
+    color: $o-main-text-color;
+}       
+       
+
+
+
+body.sh_sidebar_background_enterprise .sh_profile_menu > .sh_profile_menu_topbar .dropdown-toggle::after {display: none;}
+
+@include media-breakpoint-down(sm) {
+
+.o_debug_dropdown { z-index: $zindex-tooltip + 10;}
+    
+}

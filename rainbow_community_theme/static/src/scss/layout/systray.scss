@@ -1,0 +1,49 @@
+.o_mail_systray_item.dropdown-dark {
+    .o_mail_systray_dropdown {
+        .o_mail_systray_dropdown_items {
+            color: $o-header-dropdown-dark-item-font-color !important;
+
+            .o_mail_preview {
+                color: $o-header-dropdown-dark-item-font-color !important;
+
+                .o_preview_info {
+                    .o_no_activity {
+                        color: $o-header-dropdown-dark-item-font-color !important;
+                    }
+                }
+            }
+
+            .o_mail_preview.o_systray_activity:hover {
+                // color: $o-header-dropdown-dark-item-font-color !important;
+                background: $o-header-dropdown-dark-item-bg-color-on-hover !important;
+
+                .o_preview_name {
+                    color: $o-header-dropdown-dark-item-font-color !important;
+                }
+            }
+
+            .o_mail_preview:not(:last-child) {
+                border-bottom: 1px solid $o-header-dropdown-dark-default-menu-divider !important;
+            }
+        }
+    }
+}
+
+.o_style_default,
+.o_style_darkblue,
+.o_style_blue,
+.o_style_lightblue,
+.o_style_grey,
+.o_style_light,
+.o_style_light2,
+.o_style_purplishred {
+    .o_menu_systray {
+        .o_mail_systray_item {
+            .o_notification_counter {
+                background: $o-header-top-menu-badge-bg-color !important;
+                color: $o-header-top-menu-badge-font-color !important;
+                font-weight: 300;
+            }
+        }
+    }
+}

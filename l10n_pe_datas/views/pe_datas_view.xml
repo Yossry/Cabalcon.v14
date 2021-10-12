@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_pe_datas_tree">
+      <field name="name">pe.datas.tree</field>
+      <field name="model">pe.datas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+          <field name="table_code"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+	<record id="view_pe_datas_from" model="ir.ui.view">
+        <field name="name">pe.datas.form</field>
+        <field name="model">pe.datas</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="un_ece_code"/>
+                    </group>
+                    <group>
+                    	<field name="value"/>
+                        <field name="table_code"/>
+                        <field name="active"/>
+                    </group>
+                </group>
+                <label for="description"/>
+                <field name="description" />
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_pe_datas" model="ir.actions.act_window">
+        <field name="name">Peruvian Datas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pe.datas</field>
+        <field name="view_type">form</field>
+        <field name="help">Display and manage the Peruvian Datas.</field>
+    </record>
+    
+  
+    
+  </data>
+</odoo>

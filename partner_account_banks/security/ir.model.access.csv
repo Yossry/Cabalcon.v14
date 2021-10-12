@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_account_banks_partner_account_banks,partner_account_banks.partner_account_banks,model_partner_account_banks_partner_account_banks,,1,0,0,0

@@ -1,0 +1,216 @@
+/*--body-background-color--*/
+
+@if $body_background_type == 'bg_color'{
+.o_web_client{background:$body_background_color;color:$body_font_color;font-family:$body_font_family!important;}
+.o_control_panel{background-color:$body_background_color!important;font-family:$body_font_family!important;}
+.breadcrumb{background-color:$body_background_color!important;font-family:$body_font_family!important;}
+}
+
+
+.o_cp_buttons .btn-secondary{border: 1.5px solid $primaryColor;background: #fff;border-radius: 4px!important;}
+.o_cp_buttons .btn.btn-primary{border: 1.5px solid $primaryColor !important;font-weight: 500;}
+.o_statusbar_buttons .btn.btn-primary{border: 1.5px solid $primaryColor!important;}
+.o_statusbar_buttons .btn-secondary{border: 1.5px solid $primaryColor!important;background: #fff;}
+.o_main_navbar>a:hover,
+.o_main_navbar>a:focus,
+.o_main_navbar>button:hover,
+.o_main_navbar>button:focus {background-color: $header_active_color !important;}
+.o_form_statusbar .o_statusbar_status .btn-secondary.disabled,
+.btn-secondary:disabled {
+	background-color: #e8e8e8;
+	border-color: #e8e8e8;
+	color: #212529 !important;
+}
+.modal-footer .btn-secondary{border: 1.5px solid $primaryColor!important;background: #fff;}
+.o_chatter .o_chatter_topbar > .btn{border: 1.5px solid $primaryColor!important;}
+.sh_backmate_theme_appmenu_div a.dropdown-item.o_app.active, 
+.sh_backmate_theme_appmenu_div a.dropdown-item.o_app:active{background:$sidebar_font_hover_bg_color;color: $sidebar_font_hover_color !important;}
+.o_onboarding .o_onboarding_step .o_onboarding_step_content .o_onboarding_step_action {color: $primaryColor !important;}
+.o_calendar_view .o_calendar_widget .fc-month-view .fc-content-skeleton .fc-today .fc-day-number{background-color: $primaryColor !important;}
+/*--body-background-color--*/
+
+/* .o_view_controller .o_form_view .o_form_statusbar{border-bottom: 0px!important;} */
+
+
+@if $body_background_type == 'bg_img'{
+
+  .o_mail_thread .o_thread_message.o_mail_not_discussion, .o_mail_activity .o_thread_message.o_mail_not_discussion{
+	background-color: rgba(255, 255, 255, 0) !important;
+  }
+
+}
+
+.o_mail_thread .o_thread_message.o_mail_not_discussion,
+.o_mail_activity .o_thread_message.o_mail_not_discussion {background-color: rgba(255, 255, 255, 0.5)!important;}
+.text-muted {
+	color: #4c4c4c !important;
+}
+
+
+
+
+
+
+
+
+@if $theme_style == 'style_7'{
+
+  .o_cp_buttons .btn.btn-primary{border: 1.5px solid $primaryColor !important;}
+  .o_cp_buttons .btn.btn-primary:hover{background-color: $primary_hover !important;border-color: $primary_hover !important;box-shadow: none !important;}
+  .o_control_panel{background-color: #fff;} 
+  .o_control_panel .breadcrumb{background-color: #ffffff;}
+  .o_calendar_view .o_calendar_widget .fc-month-view .fc-content-skeleton .fc-today .fc-day-number{background-color: #FC3D39 !important;} 
+  .o_view_controller .o_form_view .o_form_statusbar{border-bottom: 1px solid #ced4da !important;} 
+  .o_statusbar_buttons .btn-secondary{border: 1.5px solid transparent !important;}
+  .o_statusbar_buttons .btn-secondary:hover{background-color: #e6e5e5 !important;border-color: #e6e5e5 !important;color: #4c4c4c;}
+  .o_statusbar_buttons .btn.btn-primary:hover{border-color: $primary_hover !important;}
+  .o_chatter .o_chatter_topbar .btn{border: 0px !important;} 
+  .o_form_view .oe_chatter{max-width: 1172px !important;}
+  .modal-footer .btn-secondary{border-color: transparent !important;}
+  .o_field_widget.o_field_many2manytags .o_tag_color_1, .o_field_widget.o_field_many2manytags .o_tag_color_1::after{border-radius: 20px;}
+  .o_field_widget.o_field_many2manytags .badge{border-radius: 20px;}
+  
+  
+   .o_form_statusbar .o_statusbar_status .btn-secondary.disabled, .btn-secondary:disabled{background: #ffffff !important;border-color: #ffffff !important;} 
+  .o_form_view .o_form_statusbar{border-bottom: 1px solid #ced4da !important;}
+  .o_mail_thread .o_thread_message.o_mail_not_discussion, .o_mail_activity .o_thread_message.o_mail_not_discussion{background-color: rgba(222, 226, 230, 0.5) !important;}
+  .o_calendar_sidebar_container .ui-datepicker td.ui-datepicker-current-day.ui-datepicker-today a{background: #FC3D39 !important;color: #ffffff !important;}
+  
+  .o_chatter .o_chatter_topbar .btn{color: $primaryColor !important;}
+  .o_activity_view .o_record_selector{color: $primaryColor !important;}
+  
+  
+  
+  @media (min-width: 768px){
+    .o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button.btn-primary.disabled{background-color: #e9ecef !important;}
+  }
+  
+  
+}
+
+
+
+
+/*
+ .o_list_view [type='checkbox']:checked + label:not(.lever):before,
+.o_form_view [type='checkbox']:checked + label:not(.lever):before{
+    top: 0px;
+    left: -5px;
+    width: 10px;
+    height: 18px;
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-transform-origin: 100% 100%;
+    -moz-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    -o-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    border-top: 2px solid transparent !important;
+    border-right: 2px solid $primaryColor !important;
+    border-bottom: 2px solid $primaryColor !important;
+    border-left: 2px solid transparent !important;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+*/
+.bg-primary{background: $primaryColor !important;color: #fff;}
+[type='checkbox'] + label:not(.lever):before, [type='checkbox']:not(.filled-in) + label:not(.lever):after{left: 5px;} 
+
+
+[type='checkbox']:checked + label:not(.lever):before{left: 0;}
+div.o_boolean_toggle.custom-control.custom-checkbox > input.custom-control-input:checked + label.custom-control-label::before{background-color: $primaryColor;}
+
+
+/* 03-10-2020 */
+
+
+/* .o_list_view [type='checkbox']:checked + label:not(.lever):before,
+.o_form_view [type='checkbox']:checked + label:not(.lever):before{border-right: 2px solid $primaryColor !important;border-bottom: 2px solid $primaryColor !important;}
+*/
+
+
+div.o_boolean_toggle.custom-control.custom-checkbox > input.custom-control-input:checked + label.custom-control-label::before{background-color: $primaryColor !important;}
+
+.o_kanban_content .bg-primary{background-color: $primaryColor !important;}
+
+/* 28-10-2020 */
+
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button:not(:first-child):after {border-left: 11px solid #fff;}
+
+
+/* 31-10-2020 */
+.btn-secondary.disabled, .o_radio_hide_bullet label.disabled, .btn-secondary:disabled, .o_radio_hide_bullet label:disabled{background: #fff !important;}
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button:not(:first-child):before, .o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button:not(:first-child):after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: auto;
+    bottom: auto;
+    right: -10px;
+    border-top: 16px solid transparent !important;
+    border-bottom: 17px solid transparent !important;
+    border-right: none !important;
+    border-left: 11px solid white !important;
+    transition: border 0.2s ease 0s;
+    -moz-transform: scale(0.9999);
+}
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button:not(:first-child):before{right: -11px;border-left-color: #dee2e6 !important;}
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button.btn-primary.disabled:after {border-left-color: $primaryColor !important;}
+.o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button.btn-primary.disabled{background: $primaryColor !important;}
+
+
+.o_form_view .oe_button_box .btn.oe_stat_button{border: 1px solid #ced4da;}
+@media only screen and (max-width: 768px){
+	.o_form_view .oe_button_box.o_not_full .oe_stat_button,.oe_stat_button{border: 1px solid #ced4da;}
+}
+
+.o_form_button_edit .fa, .o_form_button_create .fa, .o_list_button_add .fa, .o_button_import .fa, .o_dropdown_toggler_btn .fa.fa-print, .o_dropdown_toggler_btn .fa.fa-wrench, .o-kanban-button-new .fa, .o_form_button_save .fa, .o_form_button_cancel .fa{display: inline-block !important;}
+
+
+
+/* 19-11-2020 */
+
+@media only screen and (max-width: 576px){
+		.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle, .btn-secondary:not(:disabled):not(.disabled):focus {background: $primaryColor !important;opacity: 1;color: #fff !important;}
+}
+
+/* 20-11-2020 */
+
+.o_statusbar_buttons_dropdown.btn.btn-secondary.dropdown-toggle{background: $primaryColor !important;color: #ffffff !important;text-transform: uppercase;font-weight: 500;}
+@media only screen and (max-width: 576px){
+	.o_statusbar_buttons_dropdown.btn.btn-secondary.dropdown-toggle{background: $primaryColor !important;color: #ffffff !important;text-transform: uppercase;font-weight: 500;}
+}
+
+/* 21-11-2020 */
+
+@media only screen and (max-width: 576px){
+	.o_control_panel .o_cp_bottom .o_cp_bottom_right .btn-link.btn-sm{background: $primaryColor !important;color: #fff !important;}
+}
+
+/* 23-11-2020 */
+
+@if $theme_style == 'style_6'{
+	
+	.o_form_statusbar .o_field_widget .o_arrow_button{background: #fff !important;}
+}
+
+/* 9-12-2020 */
+
+.o_user_bookmark_menu a.active{color: #212121 !important;}
+
+
+
+
+
+
+
+
+
+
+

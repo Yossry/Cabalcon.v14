@@ -1,0 +1,215 @@
+// Main settings
+// =====================================================================
+$theme-name: "light";
+$brand-main-color: #3FD5C0 !default;
+$brand-main-font-color: #ffffff !default;
+
+
+// Body
+// ===================================================================== 
+$bg-color: #FFFFFF !default;
+
+// Header   
+// ===================================================================== 
+$o-header-bg-color: #747F8C !default;
+$o-header-toggler-color: lighten($o-header-bg-color, 50%) !default;
+$o-header-toggler-bg-color: lighten($bg-color, 3%) !default;
+
+//begin: MessagingMenu
+$o-header-dropdown-dark-message-font-color: #5b9bd1;
+$o-header-dropdown-dark-message-time-bg-color: lighten(#eee, 1%);
+//end: MessagingMenu
+
+//begin: Top Menu Extended Dropdowns
+$o-header-dropdown-dark-bg-color: lighten($o-header-bg-color, 10%);
+$o-header-dropdown-dark-bg-header-bg-color: lighten($o-header-bg-color, 2%);
+$o-header-dropdown-dark-bg-header-font-color: lighten($o-header-dropdown-dark-bg-color, 50%);
+
+$o-header-dropdown-dark-item-font-color: lighten($o-header-dropdown-dark-bg-color, 55%);
+$o-header-dropdown-dark-item-border-color: lighten($o-header-dropdown-dark-bg-color, 6%);
+$o-header-dropdown-dark-item-icon-color: lighten($o-header-dropdown-dark-bg-color, 45%);
+$o-header-dropdown-dark-item-bg-color-on-hover: lighten($o-header-dropdown-dark-bg-color, 4%);
+
+$o-header-dropdown-dark-default-menu-divider: $o-header-dropdown-dark-item-border-color;
+$o-header-dropdown-dark-notification-time-bg-color:darken($o-header-dropdown-dark-bg-color, 5%);
+//end: Top Menu Extended Dropdowns
+
+// Mega Menu 
+$o-header-hor-menu-bg-color: $o-header-bg-color;
+$o-header-hor-menu-fixed-border-box: 0px 1px 10px 0px rgba($o-header-hor-menu-bg-color, 0.2);
+
+//** Default Mega Menu
+$o-header-hor-menu-mega-menu-header-font-color: lighten($o-header-hor-menu-bg-color, 50%);
+
+$o-header-hor-menu-default-link-font-color: lighten($o-header-hor-menu-bg-color, 50%);
+$o-header-hor-menu-default-link-font-color-on-hover: lighten($o-header-hor-menu-default-link-font-color, 5%);
+$o-header-hor-menu-default-link-font-color-on-active: lighten($o-header-hor-menu-default-link-font-color, 50%);
+
+$o-header-hor-menu-default-link-icon-color: lighten($o-header-hor-menu-bg-color, 35%);
+$o-header-hor-menu-default-link-icon-color-on-hover: lighten($o-header-hor-menu-default-link-icon-color, 5%);
+$o-header-hor-menu-default-link-icon-color-on-active: lighten($o-header-hor-menu-default-link-icon-color, 30%);
+
+$o-header-hor-menu-default-link-bg-color-on-hover: lighten($o-header-bg-color, 10%);
+$o-header-hor-menu-default-link-bg-color-on-active: $brand-main-color;
+
+// Default Mega Menu Sub Menu 
+$o-header-hor-menu-dropdown-menu-bg-color: $o-header-hor-menu-default-link-bg-color-on-hover;
+$o-header-hor-menu-box-shadow: 5px 5px rgba($o-header-hor-menu-dropdown-menu-bg-color, 0.2);
+
+$o-header-hor-menu-dropdown-menu-link-bg-color-on-active: lighten($o-header-hor-menu-default-link-bg-color-on-hover, 4%);
+$o-header-hor-menu-dropdown-menu-link-bg-color-on-hover: lighten($o-header-hor-menu-default-link-bg-color-on-hover, 4%);
+
+$o-header-hor-menu-dropdown-menu-link-font-color: lighten($o-header-hor-menu-bg-color, 50%);
+$o-header-hor-menu-dropdown-menu-link-font-color-on-hover: lighten($o-header-hor-menu-dropdown-menu-link-font-color, 14%);
+$o-header-hor-menu-dropdown-menu-link-font-color-on-active: lighten($o-header-hor-menu-dropdown-menu-link-font-color, 14%);
+
+$o-header-hor-menu-dropdown-menu-link-icon-color: lighten($o-header-hor-menu-dropdown-menu-link-font-color, 2%);
+$o-header-hor-menu-dropdown-menu-link-icon-color-on-hover: lighten($o-header-hor-menu-dropdown-menu-link-icon-color, 14%);
+$o-header-hor-menu-dropdown-menu-link-icon-color-on-active: lighten($o-header-hor-menu-dropdown-menu-link-icon-color, 14%);
+
+//** Light Mega Menu
+$o-header-light-hor-menu-mega-menu-header-font-color: #666;
+
+$o-header-light-hor-menu-default-link-font-color: $o-header-hor-menu-default-link-font-color;
+$o-header-light-hor-menu-default-link-font-color-on-hover: $o-header-hor-menu-default-link-font-color-on-hover;
+$o-header-light-hor-menu-default-link-font-color-on-active: $o-header-hor-menu-default-link-font-color-on-active;
+
+$o-header-light-hor-menu-default-link-icon-color: $o-header-hor-menu-default-link-icon-color;
+$o-header-light-hor-menu-default-link-icon-color-on-hover: $o-header-hor-menu-default-link-icon-color-on-hover;
+$o-header-light-hor-menu-default-link-icon-color-on-active: $o-header-hor-menu-default-link-icon-color-on-active;
+
+$o-header-light-hor-menu-default-link-bg-color-on-hover: $o-header-hor-menu-default-link-bg-color-on-hover;
+$o-header-light-hor-menu-default-link-bg-color-on-active: $o-header-hor-menu-default-link-bg-color-on-active;
+
+$o-header-light-hor-menu-default-link-bg-color-on-onen: lighten(#FAFAFC, 2%);
+$o-header-light-hor-menu-default-link-font-color-on-onen: #333;
+$o-header-light-hor-menu-default-link-icon-color-on-onen: #333;
+
+// Light Mega Menu Sub Menu 
+$o-header-light-hor-menu-dropdown-menu-bg-color: $o-header-light-hor-menu-default-link-bg-color-on-onen;
+$o-header-light-hor-menu-box-shadow: 5px 5px rgba(#666, 0.1);
+
+$o-header-light-hor-menu-dropdown-menu-link-bg-color-on-active: darken($o-header-light-hor-menu-dropdown-menu-bg-color, 4%);
+$o-header-light-hor-menu-dropdown-menu-link-bg-color-on-hover: darken($o-header-light-hor-menu-dropdown-menu-bg-color, 4%);
+
+$o-header-light-hor-menu-dropdown-menu-link-font-color: #000;
+$o-header-light-hor-menu-dropdown-menu-link-font-color-on-hover: #000;
+$o-header-light-hor-menu-dropdown-menu-link-font-color-on-active: #000;
+
+$o-header-light-hor-menu-dropdown-menu-link-icon-color: #888;
+$o-header-light-hor-menu-dropdown-menu-link-icon-color-on-hover: #666;
+$o-header-light-hor-menu-dropdown-menu-link-icon-color-on-active: #666;
+
+// Header search
+$o-header-search-bg-color: darken($o-header-bg-color, 4%) !default;
+$o-header-search-bg-hover-color: $o-header-hor-menu-default-link-bg-color-on-hover !default;
+$o-header-search-bg-color-on-open: $o-header-search-bg-hover-color !default;
+$o-header-search-font-color: #c4c9d0 !default;
+$o-header-search-placeholder-font-color: darken($o-header-search-font-color, 1%) !default;
+
+// Top menu
+$o-header-top-menu-font-color:$o-header-hor-menu-default-link-font-color !default;
+$o-header-top-menu-bg-hover-color: $o-header-hor-menu-default-link-bg-color-on-hover !default;
+$o-header-top-menu-bg-hover-color-on-dropdown-open: $o-header-hor-menu-default-link-bg-color-on-hover !default;
+$o-header-top-menu-badge-bg-color: $brand-main-color;
+$o-header-top-menu-badge-font-color: #ffffff;
+$o-header-top-menu-icon-font-color: lighten(#9fa7b1, 10%) !default;
+$o-header-top-systray-menu-bg-color: #98a0aa !default;
+
+// Top menu user bar
+$o-header-top-menu-user-font-color: $o-header-hor-menu-default-link-font-color !default;
+$o-header-top-menu-user-bg-color: $o-header-search-bg-color !default;
+
+//begin: Top Menu Extended Dropdowns
+$o-header-top-menu-extended-dropdown-item-bg-color-on-hover: #f8f9fa;
+$o-header-top-menu-extended-dropdown-item-border-color: #EFF2F6;
+$o-header-top-menu-extended-dropdown-item-font-color: #888888;
+
+$o-header-top-menu-extended-dropdown-header-bg-color: darken(#f7f8fa, 4%);
+$o-header-top-menu-extended-dropdown-border-color: darken($o-header-top-menu-extended-dropdown-header-bg-color, 1%);
+$o-header-top-menu-extended-dropdown-header-font-color: darken(#6f949c, 5%);
+
+$o-header-top-menu-inbox-dropdown-from-font-color: #5b9bd1;
+
+$o-header-top-menu-task-dropdown-progress-bg-color: #dfe2e9;
+
+$o-header-top-menu-notification-time-bg-color: lighten(#eee, 1%);
+
+
+// Drawer menu
+// =====================================================================
+$o-drawer-studio-menu-shadow: 0 1px 0 rgba(black, 0.45);
+
+// Quick Theme Sidebar
+// =====================================================================
+$o-theme-quick-sidebar-header-bg-color: $o-header-bg-color;
+$o-theme-quick-sidebar-header-font-color: lighten($o-theme-quick-sidebar-header-bg-color, 60%);
+$o-theme-quick-sidebar-bg-color: $bg-color !default;
+$o-theme-quick-sidebar-font-color: #555555 !default;
+
+// Sidebar menu
+// =====================================================================
+$o-sidebar-menu-bg-color: $bg-color !default;
+$o-sidebar-menu-devider-border-color: #F0F5F7 !default;
+
+$o-sidebar-menu-link-font-color: #555555 !default;
+$o-sidebar-menu-link-font-color-on-hover: $o-sidebar-menu-link-font-color !default;
+$o-sidebar-menu-link-font-color-on-active: #ffffff !default;
+
+$o-sidebar-menu-link-icon-font-color: lighten($o-header-bg-color, 18%) !default;
+$o-sidebar-menu-link-icon-font-color-on-active: $o-sidebar-menu-link-font-color-on-active !default;
+$o-sidebar-menu-link-icon-font-color-on-hover: lighten($o-sidebar-menu-link-font-color, 35%) !default;
+
+$o-sidebar-menu-link-bg-color-on-hover:#F1F1F1 !default;
+$o-sidebar-menu-link-bg-color-on-active: $brand-main-color;
+
+$o-sidebar-menu-arrow-color: $o-sidebar-menu-link-icon-font-color !default;
+$o-sidebar-menu-arrow-color-on-active: $o-sidebar-menu-link-font-color-on-active !default;
+$o-sidebar-menu-arrow-color-on-hover: $o-sidebar-menu-link-icon-font-color-on-hover !default;
+
+$o-sidebar-menu-sub-menu-box-shadow-color: $o-sidebar-menu-link-bg-color-on-hover !default;
+$o-sidebar-menu-sub-menu-link-font-color: $o-sidebar-menu-link-font-color !default;
+$o-sidebar-menu-sub-menu-link-icon-font-color: $o-sidebar-menu-arrow-color !default;
+$o-sidebar-menu-sub-menu-link-bg-color-on-hover: #F1F1F1 !default;
+$o-sidebar-menu-sub-menu-link-icon-font-color-on-hover: $o-sidebar-menu-link-icon-font-color-on-hover !default;
+
+$o-sidebar-menu-hover-sub-menu-bg-color: darken($o-sidebar-menu-link-bg-color-on-hover, 3%) !default;
+
+// Sidebar menu for mobile
+// =====================================================================
+$o-mobile-sidebar-wrapper-bg-color: #98a0aa !default;
+$o-mobile-sidebar-menu-bg-color:darken($bg-color, 1%) !default;
+$o-mobile-sidebar-menu-link-bg-color-on-hover: darken($bg-color, 15%) !default;
+
+// Light sidebar menu
+// =====================================================================
+$o-light-sidebar-menu-link-border-color: $brand-main-color !default;
+$o-light-sidebar-menu-link-bg-color-on-hover: darken($bg-color, 4%) !default;
+$o-light-sidebar-menu-link-bg-color-on-active: darken($bg-color, 7%) !default;
+$o-light-sidebar-menu-link-font-color-on-active: #666666 !default;
+$o-light-sidebar-menu-link-icon-color-on-active: #999999 !default;
+$o-light-sidebar-menu-link-arrow-color-on-active: #999999 !default;
+
+$o-light-sidebar-menu-sub-menu-bg-color: lighten($bg-color, 2%) !default;
+$o-light-sidebar-menu-sub-menu-link-bg-color-on-hover: darken($bg-color, 7%) !default;
+
+$o-mobile-light-sidebar-menu-sub-menu-bg-color: $o-mobile-sidebar-menu-bg-color !default;
+$o-mobile-light-sidebar-menu-link-bg-color-on-hover: lighten($o-mobile-sidebar-menu-bg-color, 6%) !default;
+$o-mobile-light-sidebar-menu-link-bg-color-on-active: lighten($o-mobile-sidebar-menu-bg-color, 2%) !default;
+$o-mobile-light-sidebar-menu-sub-menu-link-bg-color-on-hover: lighten($o-mobile-sidebar-menu-bg-color, 6%) !default;
+
+// Sidebar search
+// $o-sidebar-search-bg-color: darken($bg-color, 5%) !default;
+$o-sidebar-search-bg-color: $o-sidebar-menu-bg-color !default;
+$o-sidebar-search-bottom-border-color: darken($o-sidebar-menu-devider-border-color, 3%) !default;
+$o-sidebar-search-full-border-color: darken($o-sidebar-menu-devider-border-color, 3%) !default;
+$o-sidebar-search-input-font-color: #B5C0C9 !default;
+$o-sidebar-search-input-placeholder-bg-color: $o-sidebar-search-bg-color !default;
+$o-sidebar-search-input-placeholder-font-color: lighten($o-sidebar-search-input-font-color, 3%) !default;
+
+// Footer
+// =====================================================================
+$o-footer-bg-color: lighten($o-header-bg-color, 40%) !default;
+$o-footer-default-font-color: #333333 !default;
+$o-footer-default-go-top-bg-color: #9CA6AD !default;
+$o-footer-default-go-top-icon-font-color: #dddddd !default;

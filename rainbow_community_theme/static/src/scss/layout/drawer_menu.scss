@@ -1,0 +1,250 @@
+.o_drawer_menu_background {
+    .o_main_navbar {
+        .o_menu_logo {
+            display: none;
+        }
+
+        // .o_theme_quick_sidebar_toggler {
+        //     display: none;
+        // }
+    }
+
+    &.o_touch_device {
+        // .o_theme_quick_sidebar_toggler {
+        //     display: none;
+        // }
+    }
+
+    &:not(.o_drawer_menu_background_custom) {
+        &.apps_favorite_add_mode {
+            .o_main_navbar {
+                >.o_menu_toggle {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    &:not(.o_drawer_menu_background_custom) .o_main_navbar {
+        // background-color: transparent;
+        // border-color: transparent;
+        border-bottom: 1px solid $o-header-top-menu-bg-hover-color;
+        background-color: $o-header-bg-color;
+
+        .show .dropdown-toggle {
+            background-color: rgba(black, 0.1);
+        }
+
+        .oe_topbar_avatar {
+            box-shadow: $o-drawer-studio-menu-shadow;
+        }
+
+        &,
+        &>ul>li {
+            >a {
+                text-shadow: $o-drawer-studio-menu-shadow;
+
+                &:hover,
+                &:focus {
+                    background-color: rgba(black, 0);
+                }
+            }
+        }
+    }
+
+    &.o_drawer_menu_background_custom .o_drawer_menu {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &.apps_favorite_add_mode {
+        .o_drawer_menu {
+            position: fixed;
+            width: 100%;
+            background-color: lighten($o-sidebar-menu-bg-color, 5%);
+            margin-left: $o-sidebar-menu-collapsed-width;
+            margin-top: $o-navbar-height;
+
+            .o_menu_search {
+
+                .o_menu_search_icon,
+                .o_menu_search_input {
+                    display: none;
+                }
+
+                // visibility: hidden;
+                .o_drawer_menu_drag_tips {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+
+            .o_drawer_menu_scrollable {
+                .o_apps {
+                    .drag_border {
+                        border: 2px dashed #fff;
+                    }
+
+                    .move_border {
+                        position: absolute;
+                        border: 2px dashed red;
+                    }
+
+                    .complete_border {
+                        border: 2px dashed green;
+                    }
+
+                    .chosen_border {
+                        border: 2px dashed red;
+                    }
+
+                    .ghost_border {
+                        border: 2px dashed green;
+                    }
+                }
+
+                .o_drawer_menu_footer {
+                    img {
+                        margin-bottom: 80px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &.apps_favorite_add_mode {
+            .o_drawer_menu {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.o_drawer_menu {
+    font-size: $o-font-size-base-touch;
+    -webkit-overflow-scrolling: touch; // smooth scrolling in iOS app (Safari)
+
+    .o_apps {
+        user-select: none;
+
+        .o_app {
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 3%;
+            outline: none;
+            text-decoration: none;
+            transition: all 0.3s ease 0s;
+
+            .o_app_icon {
+                background: {
+                    repeat: no-repeat;
+                    position: center;
+                    size: cover;
+                }
+
+                ;
+                border-radius: 4%;
+                box-shadow: 0 8px 0 -10px black;
+                transition: all 0.3s ease 0s;
+
+                // Pictogram icons (studio)
+                &_has_pictogram::before {
+                    background: linear-gradient(to right top, transparent, rgba(white, 0.15));
+                    border-radius: 4%;
+                    box-shadow: inset 0 1px 0 0 rgba(white, 0.4), inset 0 -1px 0 0 rgba(black, 0.4);
+                }
+
+                .fa {
+                    font-size: $o-drawer-menu-app-icon-max-width * 0.5;
+                    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.23);
+
+                    @media screen and (max-width: 260px) {
+                        // where icons start to shrink
+                        font-size: 30px; // on old browser
+                        font-size: 13vw; // ~33px at 260px
+                    }
+                }
+            }
+
+            .o_caption {
+                color: white;
+                text-shadow: 0 1px 1px rgba(black, 0.8);
+            }
+
+            &:focus,
+            &.o_focused,
+            &:hover {
+                .o_app_icon {
+                    box-shadow: 0 8px 15px -10px black;
+                    transform: translateY(-1px);
+                }
+            }
+
+            &.o_menuitem {
+
+                &:focus,
+                &.o_focused {
+                    background-color: rgba(white, 0.05);
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+
+    .o_menuitems {
+        margin-bottom: 40px;
+
+        .o_menuitem {
+            color: $gray-200;
+            outline: none;
+            @include o-text-overflow;
+
+            @include media-breakpoint-up(md) {
+                font-size: 20px;
+            }
+
+            .o_menuitem_parents {
+                font-weight: $font-weight-light;
+                color: $gray-400;
+            }
+
+            &:hover,
+            &:focus,
+            &.o_focused {
+                color: white;
+
+                .o_menuitem_parents {
+                    color: $gray-300;
+                }
+            }
+
+            &:focus,
+            &.o_focused {
+                background-color: rgba(white, 0.05);
+            }
+        }
+    }
+
+    .o_no_result {
+        color: $o-brand-lightsecondary;
+        font-size: 22px;
+    }
+
+    .o_drawer_menu_footer {
+        user-select: none;
+        display: flex;
+        flex: 1 0 auto;
+        align-items: flex-end;
+
+        >img {
+            width: 96px;
+            margin-bottom: 30px;
+            // margin-bottom: 60px;
+            -webkit-filter: drop-shadow(0 1px 0px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 1px 0px rgba(0, 0, 0, 0.4));
+        }
+    }
+}

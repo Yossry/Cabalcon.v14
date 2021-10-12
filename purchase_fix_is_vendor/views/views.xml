@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="purchase_fix_is_vendor.list">
+      <field name="name">purchase_fix_is_vendor list</field>
+      <field name="model">purchase_fix_is_vendor.purchase_fix_is_vendor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="purchase_fix_is_vendor.action_window">
+      <field name="name">purchase_fix_is_vendor window</field>
+      <field name="res_model">purchase_fix_is_vendor.purchase_fix_is_vendor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="purchase_fix_is_vendor.action_server">
+      <field name="name">purchase_fix_is_vendor server</field>
+      <field name="model_id" ref="model_purchase_fix_is_vendor_purchase_fix_is_vendor"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="purchase_fix_is_vendor" id="purchase_fix_is_vendor.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="purchase_fix_is_vendor.menu_1" parent="purchase_fix_is_vendor.menu_root"/>
+    <menuitem name="Menu 2" id="purchase_fix_is_vendor.menu_2" parent="purchase_fix_is_vendor.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="purchase_fix_is_vendor.menu_1_list" parent="purchase_fix_is_vendor.menu_1"
+              action="purchase_fix_is_vendor.action_window"/>
+    <menuitem name="Server to list" id="purchase_fix_is_vendor" parent="purchase_fix_is_vendor.menu_2"
+              action="purchase_fix_is_vendor.action_server"/>
+-->
+  </data>
+</odoo>
